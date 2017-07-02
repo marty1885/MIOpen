@@ -1,0 +1,506 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Batch Normalization Layer &mdash; MIOpen: AMD&#39;s deep learning library</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="MIOpen: AMD&#39;s deep learning library" href="index.html"/>
+        <link rel="up" title="API Reference" href="apireference.html"/>
+        <link rel="next" title="GEMM Operations" href="gemm.html"/>
+        <link rel="prev" title="Local Response Normalization Layer" href="lrn.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MIOpen
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">MIOpen</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#backends">Backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#configure-with-cmake">Configure with cmake</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install.html#for-opencl-run">For OpenCL, run:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#for-hip-run">For HIP, run:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#building-the-library">Building the library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#building-the-driver">Building the driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#running-the-tests">Running the tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#building-the-documentation">Building the documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="apireference.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="handle.html">Handle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopenstatus-t">miopenStatus_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopencreate">miopenCreate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopencreatewithstream">miopenCreateWithStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopendestroy">miopenDestroy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopensetstream">miopenSetStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopengetstream">miopenGetStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopengetkerneltime">miopenGetKernelTime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopenenableprofiling">miopenEnableProfiling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopendatatype-t">miopenDataType_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopentensorop-t">miopenTensorOp_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopencreatetensordescriptor">miopenCreateTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopenset4dtensordescriptor">miopenSet4dTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopenget4dtensordescriptor">miopenGet4dTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopensettensordescriptor">miopenSetTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopengettensordescriptorsize">miopenGetTensorDescriptorSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopengettensordescriptor">miopenGetTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopendestroytensordescriptor">miopenDestroyTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopenoptensor">miopenOpTensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopensettensor">miopenSetTensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopenscaletensor">miopenScaleTensor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="activation.html">Activation Layers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="activation.html#miopenactivationmode-t">miopenActivationMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="activation.html#miopensetactivationdescriptor">miopenSetActivationDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="activation.html#miopengetactivationdescriptor">miopenGetActivationDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="activation.html#miopenactivationforward">miopenActivationForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="activation.html#miopenactivationbackward">miopenActivationBackward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="activation.html#miopendestroyactivationdescriptor">miopenDestroyActivationDescriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="convolution.html">Convolutional Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionmode-t">miopenConvolutionMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvfwdalgorithm-t">miopenConvFwdAlgorithm_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvbwdweightsalgorithm-t">miopenConvBwdWeightsAlgorithm_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvbwddataalgorithm-t">miopenConvBwdDataAlgorithm_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvalgoperf-t">miopenConvAlgoPerf_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopencreateconvolutiondescriptor">miopenCreateConvolutionDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopeninitconvolutiondescriptor">miopenInitConvolutionDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopengetconvolutiondescriptor">miopenGetConvolutionDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopengetconvolutionforwardoutputdim">miopenGetConvolutionForwardOutputDim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionforwardgetworkspacesize">miopenConvolutionForwardGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenfindconvolutionforwardalgorithm">miopenFindConvolutionForwardAlgorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionforward">miopenConvolutionForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionforwardbias">miopenConvolutionForwardBias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenfindconvolutionbackwarddataalgorithm">miopenFindConvolutionBackwardDataAlgorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionbackwarddata">miopenConvolutionBackwardData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionbackwarddatagetworkspacesize">miopenConvolutionBackwardDataGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionbackwardweightsgetworkspacesize">miopenConvolutionBackwardWeightsGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenfindconvolutionbackwardweightsalgorithm">miopenFindConvolutionBackwardWeightsAlgorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionbackwardweights">miopenConvolutionBackwardWeights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionbackwardbias">miopenConvolutionBackwardBias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopendestroyconvolutiondescriptor">miopenDestroyConvolutionDescriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pooling.html">Pooling Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenpoolingmode-t">miopenPoolingMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopencreatepoolingdescriptor">miopenCreatePoolingDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenset2dpoolingdescriptor">miopenSet2dPoolingDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenget2dpoolingdescriptor">miopenGet2dPoolingDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopengetpoolingforwardoutputdim">miopenGetPoolingForwardOutputDim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenpoolinggetworkspacesize">miopenPoolingGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenpoolingforward">miopenPoolingForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenpoolingbackward">miopenPoolingBackward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopendestroypoolingdescriptor">miopenDestroyPoolingDescriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="softmax.html">Softmax Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="softmax.html#miopensoftmaxforward">miopenSoftmaxForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="softmax.html#miopensoftmaxbackward">miopenSoftmaxBackward</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lrn.html">Local Response Normalization Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopenlrnmode-t">miopenLRNMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopencreatelrndescriptor">miopenCreateLRNDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopensetlrndescriptor">miopenSetLRNDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopengetlrndescriptor">miopenGetLRNDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopenlrngetworkspacesize">miopenLRNGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopenlrnforward">miopenLRNForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopenlrnbackward">miopenLRNBackward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopendestroylrndescriptor">miopenDestroyLRNDescriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Batch Normalization Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#miopenbatchnormmode-t">miopenBatchNormMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenderivebntensordescriptor">miopenDeriveBNTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenbatchnormalizationforwardtraining">miopenBatchNormalizationForwardTraining</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenbatchnormalizationforwardinference">miopenBatchNormalizationForwardInference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenbatchnormalizationbackward">miopenBatchNormalizationBackward</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gemm.html">GEMM Operations</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MIOpen</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="apireference.html">API Reference</a> &raquo;</li>
+        
+      <li>Batch Normalization Layer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/batchnorm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="batch-normalization-layer">
+<h1>Batch Normalization Layer<a class="headerlink" href="#batch-normalization-layer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="miopenbatchnormmode-t">
+<h2>miopenBatchNormMode_t<a class="headerlink" href="#miopenbatchnormmode-t" title="Permalink to this headline">¶</a></h2>
+<dl class="type">
+<dt id="_CPPv221miopenBatchNormMode_t">
+<span id="miopenBatchNormMode_t"></span><span class="target" id="group__batchnorm_1gab21179fc753f8e0d1a6f23ac9b340a26"></span><em class="property">enum </em><code class="descclassname"></code><code class="descname">miopenBatchNormMode_t</code><a class="headerlink" href="#_CPPv221miopenBatchNormMode_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Batch Normalization layer mode </p>
+<p><em>Values:</em></p>
+<dl class="member">
+<dt id="_CPPv221miopenBNPerActivation">
+<span id="miopenBNPerActivation"></span><span class="target" id="miopen_8h_1gab21179fc753f8e0d1a6f23ac9b340a26a44ab9eadea90a770a3744a61b71d536f"></span><code class="descname">miopenBNPerActivation</code> = 0<a class="headerlink" href="#_CPPv221miopenBNPerActivation" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Element-wise normalization for fully connected layer </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv215miopenBNSpatial">
+<span id="miopenBNSpatial"></span><span class="target" id="miopen_8h_1gab21179fc753f8e0d1a6f23ac9b340a26a42ebad7a4f774e7dc3df2de80b31a3e0"></span><code class="descname">miopenBNSpatial</code> = 1<a class="headerlink" href="#_CPPv215miopenBNSpatial" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Mini-batch spatial normalization for convolutional layers </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="miopenderivebntensordescriptor">
+<h2>miopenDeriveBNTensorDescriptor<a class="headerlink" href="#miopenderivebntensordescriptor" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv230miopenDeriveBNTensorDescriptor24miopenTensorDescriptor_tK24miopenTensorDescriptor_t21miopenBatchNormMode_t">
+<span id="miopenDeriveBNTensorDescriptor__miopenTensorDescriptor_t.miopenTensorDescriptor_tC.miopenBatchNormMode_t"></span><span class="target" id="group__batchnorm_1ga7cf0d3f5dbbab3ed6ac7f17b0aa77e33"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenDeriveBNTensorDescriptor</code><span class="sig-paren">(</span>miopenTensorDescriptor_t <em>derivedBnDesc</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>xDesc</em>, <a class="reference internal" href="#_CPPv221miopenBatchNormMode_t" title="miopenBatchNormMode_t">miopenBatchNormMode_t</a> <em>bn_mode</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv230miopenDeriveBNTensorDescriptor24miopenTensorDescriptor_tK24miopenTensorDescriptor_t21miopenBatchNormMode_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Derive tensor for gamma and beta from input tensor descriptor. </p>
+<p>This function takes the input tensor descriptor and outputs a derived tensor for the normalization scale (gamma) and shift (beta) tensors. For an input tensor NCHW and spatial mode, the output derived tensor is 1C11, while for per-activation the derived tensor is 1CHW.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">derivedBnDesc</span></code>: Output derived tensor descriptor </li>
+<li><code class="docutils literal"><span class="pre">xDesc</span></code>: Input tensor descriptor </li>
+<li><code class="docutils literal"><span class="pre">bn_mode</span></code>: Batch Normalization mode </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopenbatchnormalizationforwardtraining">
+<h2>miopenBatchNormalizationForwardTraining<a class="headerlink" href="#miopenbatchnormalizationforwardtraining" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv239miopenBatchNormalizationForwardTraining14miopenHandle_t21miopenBatchNormMode_tPvPvK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPvK24miopenTensorDescriptor_tPvPvdPvPvdPvPv">
+<span id="miopenBatchNormalizationForwardTraining__miopenHandle_t.miopenBatchNormMode_t.voidP.voidP.miopenTensorDescriptor_tC.voidCP.miopenTensorDescriptor_tC.voidP.miopenTensorDescriptor_tC.voidP.voidP.double.voidP.voidP.double.voidP.voidP"></span><span class="target" id="group__batchnorm_1gaea994914a9da7aaebcf813df894263b1"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenBatchNormalizationForwardTraining</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, <a class="reference internal" href="#_CPPv221miopenBatchNormMode_t" title="miopenBatchNormMode_t">miopenBatchNormMode_t</a> <em>bn_mode</em>, void *<em>alpha</em>, void *<em>beta</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>xDesc</em>, <em class="property">const</em> void *<em>x</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>yDesc</em>, void *<em>y</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>bnScaleBiasMeanVarDesc</em>, void *<em>bnScale</em>, void *<em>bnBias</em>, double <em>expAvgFactor</em>, void *<em>resultRunningMean</em>, void *<em>resultRunningVariance</em>, double <em>epsilon</em>, void *<em>resultSaveMean</em>, void *<em>resultSaveInvVariance</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv239miopenBatchNormalizationForwardTraining14miopenHandle_t21miopenBatchNormMode_tPvPvK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPvK24miopenTensorDescriptor_tPvPvdPvPvdPvPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Execute forward training layer for batch normalization. </p>
+<p>Batch normalization pass for forward training pass. Takes in batch normalization mode bn_mode and input tensor x, output tensor y, bnBias and bnScale with their descriptor. If either resultSaveMean, or resultSaveInvVariance are null pointers then the values for the mean and inverse variance will not be used. Likewise, if either resultRunningMean, or resultRunningVariance are null pointers then the values for the running mean and variance will not be saved. Running averages and variances are scaled using an exponential averaging factor: <div class="math">
+\[ \mu_{old} = \mu_{new}*factor + \mu_{old}*(1-factor) \]</div>
+ where <div class="math">
+\[ factor=1/(1+iteration) \]</div>
+</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">bn_mode</span></code>: Batch normalization mode (spatial/ per-activation) </li>
+<li><code class="docutils literal"><span class="pre">alpha</span></code>: Scaling factor, always equal to 1 </li>
+<li><code class="docutils literal"><span class="pre">beta</span></code>: Shift factor, always equal to 0 </li>
+<li><code class="docutils literal"><span class="pre">xDesc</span></code>: Tensor descriptor for data input tensor x </li>
+<li><code class="docutils literal"><span class="pre">x</span></code>: Data tensor x </li>
+<li><code class="docutils literal"><span class="pre">yDesc</span></code>: Tensor descriptor for output data tensor y </li>
+<li><code class="docutils literal"><span class="pre">y</span></code>: Data tensor y </li>
+<li><code class="docutils literal"><span class="pre">bnScaleBiasMeanVarDesc</span></code>: Tensor descriptor for BN scaling, shifting, saved variance and mean </li>
+<li><code class="docutils literal"><span class="pre">bnScale</span></code>: Batch norm scaling (gamma) tensor </li>
+<li><code class="docutils literal"><span class="pre">bnBias</span></code>: Batch norm bias (beta) tensor </li>
+<li><code class="docutils literal"><span class="pre">expAvgFactor</span></code>: Exponential averaging factor </li>
+<li><code class="docutils literal"><span class="pre">resultRunningMean</span></code>: Running average saved for inference </li>
+<li><code class="docutils literal"><span class="pre">resultRunningVariance</span></code>: Running variance saved for inference </li>
+<li><code class="docutils literal"><span class="pre">epsilon</span></code>: Value to stablize inverse variance calculation </li>
+<li><code class="docutils literal"><span class="pre">resultSaveMean</span></code>: Saved mini-batch mean for backwards pass </li>
+<li><code class="docutils literal"><span class="pre">resultSaveInvVariance</span></code>: Saved mini-batch inverse variance for backwards pass </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopenbatchnormalizationforwardinference">
+<h2>miopenBatchNormalizationForwardInference<a class="headerlink" href="#miopenbatchnormalizationforwardinference" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv240miopenBatchNormalizationForwardInference14miopenHandle_t21miopenBatchNormMode_tPvPvK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPvK24miopenTensorDescriptor_tPvPvPvPvd">
+<span id="miopenBatchNormalizationForwardInference__miopenHandle_t.miopenBatchNormMode_t.voidP.voidP.miopenTensorDescriptor_tC.voidCP.miopenTensorDescriptor_tC.voidP.miopenTensorDescriptor_tC.voidP.voidP.voidP.voidP.double"></span><span class="target" id="group__batchnorm_1ga0105f1e4b647d79cd8d665e8bc403763"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenBatchNormalizationForwardInference</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, <a class="reference internal" href="#_CPPv221miopenBatchNormMode_t" title="miopenBatchNormMode_t">miopenBatchNormMode_t</a> <em>bn_mode</em>, void *<em>alpha</em>, void *<em>beta</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>xDesc</em>, <em class="property">const</em> void *<em>x</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>yDesc</em>, void *<em>y</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>bnScaleBiasMeanVarDesc</em>, void *<em>bnScale</em>, void *<em>bnBias</em>, void *<em>estimatedMean</em>, void *<em>estimatedVariance</em>, double <em>epsilon</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv240miopenBatchNormalizationForwardInference14miopenHandle_t21miopenBatchNormMode_tPvPvK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPvK24miopenTensorDescriptor_tPvPvPvPvd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Execute forward inference layer for batch normalization. </p>
+<p>Batch normalization pass for forward inference pass. Takes in batch normalization mode bn_mode and input tensor x, output tensor y, bnBias and bnScale with their descriptor. If either estimatedMEan, or estimatedVariance are null pointers then the values for the mean and variance will not be used.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">bn_mode</span></code>: Batch normalization mode (spatial/ per-activation) </li>
+<li><code class="docutils literal"><span class="pre">alpha</span></code>: Scaling factor, always equal to 1 </li>
+<li><code class="docutils literal"><span class="pre">beta</span></code>: Shift factor, always equal to 0 </li>
+<li><code class="docutils literal"><span class="pre">xDesc</span></code>: Tensor descriptor for data input tensor x </li>
+<li><code class="docutils literal"><span class="pre">x</span></code>: Data tensor x </li>
+<li><code class="docutils literal"><span class="pre">yDesc</span></code>: Tensor descriptor for output data tensor y </li>
+<li><code class="docutils literal"><span class="pre">y</span></code>: Data tensor y </li>
+<li><code class="docutils literal"><span class="pre">bnScaleBiasMeanVarDesc</span></code>: Tensor descriptor for BN scaling, shifting, saved variance and mean </li>
+<li><code class="docutils literal"><span class="pre">bnScale</span></code>: Batch norm scaling (gamma) tensor </li>
+<li><code class="docutils literal"><span class="pre">bnBias</span></code>: Batch norm bias (beta) tensor </li>
+<li><code class="docutils literal"><span class="pre">estimatedMean</span></code>: Running average saved during forward training </li>
+<li><code class="docutils literal"><span class="pre">estimatedVariance</span></code>: Running variance saved during forward training </li>
+<li><code class="docutils literal"><span class="pre">epsilon</span></code>: Value to stablize inverse variance calculation </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopenbatchnormalizationbackward">
+<h2>miopenBatchNormalizationBackward<a class="headerlink" href="#miopenbatchnormalizationbackward" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv232miopenBatchNormalizationBackward14miopenHandle_t21miopenBatchNormMode_tPKvPKvPKvPKvK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPvK24miopenTensorDescriptor_tPKvPvPvdPKvPKv">
+<span id="miopenBatchNormalizationBackward__miopenHandle_t.miopenBatchNormMode_t.voidCP.voidCP.voidCP.voidCP.miopenTensorDescriptor_tC.voidCP.miopenTensorDescriptor_tC.voidCP.miopenTensorDescriptor_tC.voidP.miopenTensorDescriptor_tC.voidCP.voidP.voidP.double.voidCP.voidCP"></span><span class="target" id="group__batchnorm_1ga76f0bf9bd5e80df21966d7c074779fbc"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenBatchNormalizationBackward</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, <a class="reference internal" href="#_CPPv221miopenBatchNormMode_t" title="miopenBatchNormMode_t">miopenBatchNormMode_t</a> <em>bn_mode</em>, <em class="property">const</em> void *<em>alphaDataDiff</em>, <em class="property">const</em> void *<em>betaDataDiff</em>, <em class="property">const</em> void *<em>alphaParamDiff</em>, <em class="property">const</em> void *<em>betaParamDiff</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>xDesc</em>, <em class="property">const</em> void *<em>x</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>dyDesc</em>, <em class="property">const</em> void *<em>dy</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>dxDesc</em>, void *<em>dx</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>bnScaleBiasDiffDesc</em>, <em class="property">const</em> void *<em>bnScale</em>, void *<em>resultBnScaleDiff</em>, void *<em>resultBnBiasDiff</em>, double <em>epsilon</em>, <em class="property">const</em> void *<em>savedMean</em>, <em class="property">const</em> void *<em>savedInvVariance</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv232miopenBatchNormalizationBackward14miopenHandle_t21miopenBatchNormMode_tPKvPKvPKvPKvK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPvK24miopenTensorDescriptor_tPKvPvPvdPKvPKv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Execute backwards propagation layer for batch normalization. </p>
+<p>Batch normalization pass for backwards propagation training pass. The method for backwards propagation batch normalization. Takes in batch normalization mode bn_mode and input tensor data x, input activation tensor dy, output tensor dx, the learned tensors resultBNBiasDiff and resultBNScaleDiff with their descriptor. If BOTH savedMean, and savedVariance are not null pointers then the method will use the saved mean and variance calculated by the forward training phase.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">bn_mode</span></code>: Batch normalization mode (spatial/ per-activation) </li>
+<li><code class="docutils literal"><span class="pre">alphaDataDiff</span></code>: Scaling factor, always equal to 1 </li>
+<li><code class="docutils literal"><span class="pre">betaDataDiff</span></code>: Shift factor, always equal to 0 </li>
+<li><code class="docutils literal"><span class="pre">alphaParamDiff</span></code>: Scaling factor, always equal to 1 </li>
+<li><code class="docutils literal"><span class="pre">betaParamDiff</span></code>: Shift factor, always equal to 0 </li>
+<li><code class="docutils literal"><span class="pre">xDesc</span></code>: Tensor descriptor for data input tensor x </li>
+<li><code class="docutils literal"><span class="pre">x</span></code>: Data tensor x </li>
+<li><code class="docutils literal"><span class="pre">dyDesc</span></code>: Tensor descriptor for output data tensor y </li>
+<li><code class="docutils literal"><span class="pre">dy</span></code>: Data tensor y </li>
+<li><code class="docutils literal"><span class="pre">dxDesc</span></code>: Tensor descriptor for output data tensor dx </li>
+<li><code class="docutils literal"><span class="pre">dx</span></code>: Data delta tensor dx </li>
+<li><code class="docutils literal"><span class="pre">bnScaleBiasDiffDesc</span></code>: Tensor descriptor for BN scaling, shifting, saved variance and mean </li>
+<li><code class="docutils literal"><span class="pre">bnScale</span></code>: Batch norm scaling (gamma) tensor </li>
+<li><code class="docutils literal"><span class="pre">resultBnScaleDiff</span></code>: Tensor for dscale </li>
+<li><code class="docutils literal"><span class="pre">resultBnBiasDiff</span></code>: Tensor for dbias </li>
+<li><code class="docutils literal"><span class="pre">epsilon</span></code>: Value to stablize inverse variance calculation </li>
+<li><code class="docutils literal"><span class="pre">savedMean</span></code>: Saved mini-batch mean for backwards pass </li>
+<li><code class="docutils literal"><span class="pre">savedInvVariance</span></code>: Saved mini-bathc inverse variance for backwards pass </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gemm.html" class="btn btn-neutral float-right" title="GEMM Operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lrn.html" class="btn btn-neutral" title="Local Response Normalization Layer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Advanced Micro Devices, Inc.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

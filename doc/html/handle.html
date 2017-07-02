@@ -1,0 +1,548 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Handle &mdash; MIOpen: AMD&#39;s deep learning library</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="MIOpen: AMD&#39;s deep learning library" href="index.html"/>
+        <link rel="up" title="API Reference" href="apireference.html"/>
+        <link rel="next" title="Tensors" href="tensor.html"/>
+        <link rel="prev" title="API Reference" href="apireference.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MIOpen
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">MIOpen</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#backends">Backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#configure-with-cmake">Configure with cmake</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install.html#for-opencl-run">For OpenCL, run:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#for-hip-run">For HIP, run:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#building-the-library">Building the library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#building-the-driver">Building the driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#running-the-tests">Running the tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#building-the-documentation">Building the documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="apireference.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Handle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#miopenstatus-t">miopenStatus_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopencreate">miopenCreate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopencreatewithstream">miopenCreateWithStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopendestroy">miopenDestroy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopensetstream">miopenSetStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopengetstream">miopenGetStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopengetkerneltime">miopenGetKernelTime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenenableprofiling">miopenEnableProfiling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopendatatype-t">miopenDataType_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopentensorop-t">miopenTensorOp_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopencreatetensordescriptor">miopenCreateTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopenset4dtensordescriptor">miopenSet4dTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopenget4dtensordescriptor">miopenGet4dTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopensettensordescriptor">miopenSetTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopengettensordescriptorsize">miopenGetTensorDescriptorSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopengettensordescriptor">miopenGetTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopendestroytensordescriptor">miopenDestroyTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopenoptensor">miopenOpTensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopensettensor">miopenSetTensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopenscaletensor">miopenScaleTensor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="activation.html">Activation Layers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="activation.html#miopenactivationmode-t">miopenActivationMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="activation.html#miopensetactivationdescriptor">miopenSetActivationDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="activation.html#miopengetactivationdescriptor">miopenGetActivationDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="activation.html#miopenactivationforward">miopenActivationForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="activation.html#miopenactivationbackward">miopenActivationBackward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="activation.html#miopendestroyactivationdescriptor">miopenDestroyActivationDescriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="convolution.html">Convolutional Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionmode-t">miopenConvolutionMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvfwdalgorithm-t">miopenConvFwdAlgorithm_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvbwdweightsalgorithm-t">miopenConvBwdWeightsAlgorithm_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvbwddataalgorithm-t">miopenConvBwdDataAlgorithm_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvalgoperf-t">miopenConvAlgoPerf_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopencreateconvolutiondescriptor">miopenCreateConvolutionDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopeninitconvolutiondescriptor">miopenInitConvolutionDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopengetconvolutiondescriptor">miopenGetConvolutionDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopengetconvolutionforwardoutputdim">miopenGetConvolutionForwardOutputDim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionforwardgetworkspacesize">miopenConvolutionForwardGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenfindconvolutionforwardalgorithm">miopenFindConvolutionForwardAlgorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionforward">miopenConvolutionForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionforwardbias">miopenConvolutionForwardBias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenfindconvolutionbackwarddataalgorithm">miopenFindConvolutionBackwardDataAlgorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionbackwarddata">miopenConvolutionBackwardData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionbackwarddatagetworkspacesize">miopenConvolutionBackwardDataGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionbackwardweightsgetworkspacesize">miopenConvolutionBackwardWeightsGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenfindconvolutionbackwardweightsalgorithm">miopenFindConvolutionBackwardWeightsAlgorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionbackwardweights">miopenConvolutionBackwardWeights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionbackwardbias">miopenConvolutionBackwardBias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopendestroyconvolutiondescriptor">miopenDestroyConvolutionDescriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pooling.html">Pooling Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenpoolingmode-t">miopenPoolingMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopencreatepoolingdescriptor">miopenCreatePoolingDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenset2dpoolingdescriptor">miopenSet2dPoolingDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenget2dpoolingdescriptor">miopenGet2dPoolingDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopengetpoolingforwardoutputdim">miopenGetPoolingForwardOutputDim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenpoolinggetworkspacesize">miopenPoolingGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenpoolingforward">miopenPoolingForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenpoolingbackward">miopenPoolingBackward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopendestroypoolingdescriptor">miopenDestroyPoolingDescriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="softmax.html">Softmax Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="softmax.html#miopensoftmaxforward">miopenSoftmaxForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="softmax.html#miopensoftmaxbackward">miopenSoftmaxBackward</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lrn.html">Local Response Normalization Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopenlrnmode-t">miopenLRNMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopencreatelrndescriptor">miopenCreateLRNDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopensetlrndescriptor">miopenSetLRNDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopengetlrndescriptor">miopenGetLRNDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopenlrngetworkspacesize">miopenLRNGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopenlrnforward">miopenLRNForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopenlrnbackward">miopenLRNBackward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopendestroylrndescriptor">miopenDestroyLRNDescriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="batchnorm.html">Batch Normalization Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="batchnorm.html#miopenbatchnormmode-t">miopenBatchNormMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batchnorm.html#miopenderivebntensordescriptor">miopenDeriveBNTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batchnorm.html#miopenbatchnormalizationforwardtraining">miopenBatchNormalizationForwardTraining</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batchnorm.html#miopenbatchnormalizationforwardinference">miopenBatchNormalizationForwardInference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batchnorm.html#miopenbatchnormalizationbackward">miopenBatchNormalizationBackward</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gemm.html">GEMM Operations</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MIOpen</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="apireference.html">API Reference</a> &raquo;</li>
+        
+      <li>Handle</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/handle.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="handle">
+<h1>Handle<a class="headerlink" href="#handle" title="Permalink to this headline">¶</a></h1>
+<p>Handle types and functions.</p>
+<div class="section" id="miopenstatus-t">
+<h2>miopenStatus_t<a class="headerlink" href="#miopenstatus-t" title="Permalink to this headline">¶</a></h2>
+<dl class="type">
+<dt id="_CPPv214miopenStatus_t">
+<span id="miopenStatus_t"></span><span class="target" id="group__handle_1ga74216ea6ba6c5487d5aceb46eb35f1d6"></span><em class="property">enum </em><code class="descclassname"></code><code class="descname">miopenStatus_t</code><a class="headerlink" href="#_CPPv214miopenStatus_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Error codes that are returned by all MIOpen API calls. </p>
+<p><em>Values:</em></p>
+<dl class="member">
+<dt id="_CPPv219miopenStatusSuccess">
+<span id="miopenStatusSuccess"></span><span class="target" id="group__handle_1gga74216ea6ba6c5487d5aceb46eb35f1d6a3fc50915c64e73ec736e0f9c2cb78129"></span><code class="descname">miopenStatusSuccess</code> = 0<a class="headerlink" href="#_CPPv219miopenStatusSuccess" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>No errors </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv226miopenStatusNotInitialized">
+<span id="miopenStatusNotInitialized"></span><span class="target" id="group__handle_1gga74216ea6ba6c5487d5aceb46eb35f1d6abd80b3c675e17392162640b6a5cb7375"></span><code class="descname">miopenStatusNotInitialized</code> = 1<a class="headerlink" href="#_CPPv226miopenStatusNotInitialized" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Data not initialized. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv224miopenStatusInvalidValue">
+<span id="miopenStatusInvalidValue"></span><span class="target" id="group__handle_1gga74216ea6ba6c5487d5aceb46eb35f1d6af0d655f9d71417a7143be6452651c1bb"></span><code class="descname">miopenStatusInvalidValue</code> = 2<a class="headerlink" href="#_CPPv224miopenStatusInvalidValue" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Incorrect variable value. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv219miopenStatusBadParm">
+<span id="miopenStatusBadParm"></span><span class="target" id="group__handle_1gga74216ea6ba6c5487d5aceb46eb35f1d6abcd087689c69bcee83d4726487c8cca8"></span><code class="descname">miopenStatusBadParm</code> = 3<a class="headerlink" href="#_CPPv219miopenStatusBadParm" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Incorrect parameter detected. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv223miopenStatusAllocFailed">
+<span id="miopenStatusAllocFailed"></span><span class="target" id="group__handle_1gga74216ea6ba6c5487d5aceb46eb35f1d6a9a1f9f181bb7d5649d3bb788760c489b"></span><code class="descname">miopenStatusAllocFailed</code> = 4<a class="headerlink" href="#_CPPv223miopenStatusAllocFailed" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Memory allocation error. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv225miopenStatusInternalError">
+<span id="miopenStatusInternalError"></span><span class="target" id="group__handle_1gga74216ea6ba6c5487d5aceb46eb35f1d6acfdd2d77791aae4ddd442f819189c19c"></span><code class="descname">miopenStatusInternalError</code> = 5<a class="headerlink" href="#_CPPv225miopenStatusInternalError" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>MIOpen failure. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv226miopenStatusNotImplemented">
+<span id="miopenStatusNotImplemented"></span><span class="target" id="group__handle_1gga74216ea6ba6c5487d5aceb46eb35f1d6ab6a11c9af8b9e52ab982abd85673ce9e"></span><code class="descname">miopenStatusNotImplemented</code> = 6<a class="headerlink" href="#_CPPv226miopenStatusNotImplemented" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Use of unimplemented feature. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv224miopenStatusUnknownError">
+<span id="miopenStatusUnknownError"></span><span class="target" id="group__handle_1gga74216ea6ba6c5487d5aceb46eb35f1d6a1504690ef8823ed85612008c08277b88"></span><code class="descname">miopenStatusUnknownError</code> = 7<a class="headerlink" href="#_CPPv224miopenStatusUnknownError" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Unknown error occurred. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="miopencreate">
+<h2>miopenCreate<a class="headerlink" href="#miopencreate" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv212miopenCreateP14miopenHandle_t">
+<span id="miopenCreate__miopenHandle_tP"></span><span class="target" id="group__handle_1gadc3aee857a3b68a341844398909edf31"></span> <a class="reference internal" href="#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenCreate</code><span class="sig-paren">(</span>miopenHandle_t *<em>handle</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv212miopenCreateP14miopenHandle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Method to create the MIOpen handle object. </p>
+<p>Creates a MIOpen handle. This is called at the very start to initialize the MIOpen environment. <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: A pointer to a MIOpen handle type </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopencreatewithstream">
+<h2>miopenCreateWithStream<a class="headerlink" href="#miopencreatewithstream" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv222miopenCreateWithStreamP14miopenHandle_t24miopenAcceleratorQueue_t">
+<span id="miopenCreateWithStream__miopenHandle_tP.miopenAcceleratorQueue_t"></span><span class="target" id="group__handle_1gaf64af17fb91d751097da2efc6a3de3da"></span> <a class="reference internal" href="#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenCreateWithStream</code><span class="sig-paren">(</span>miopenHandle_t *<em>handle</em>, miopenAcceleratorQueue_t <em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv222miopenCreateWithStreamP14miopenHandle_t24miopenAcceleratorQueue_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create a MIOpen handle with an accelerator stream. </p>
+<p>Create a handle with a previously created accelerator command queue <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: A pointer to a MIOpen handle type </li>
+<li><code class="docutils literal"><span class="pre">stream</span></code>: An accelerator queue type </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopendestroy">
+<h2>miopenDestroy<a class="headerlink" href="#miopendestroy" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv213miopenDestroy14miopenHandle_t">
+<span id="miopenDestroy__miopenHandle_t"></span><span class="target" id="group__handle_1ga6fb71eda2f0bf330a6980eb21658503b"></span> <a class="reference internal" href="#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenDestroy</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv213miopenDestroy14miopenHandle_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Destroys the MIOpen handle. </p>
+<p>This is called when breaking down the MIOpen environment. <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopensetstream">
+<h2>miopenSetStream<a class="headerlink" href="#miopensetstream" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv215miopenSetStream14miopenHandle_t24miopenAcceleratorQueue_t">
+<span id="miopenSetStream__miopenHandle_t.miopenAcceleratorQueue_t"></span><span class="target" id="group__handle_1gae110c66b903eb0218c513f8416bd9a41"></span> <a class="reference internal" href="#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenSetStream</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, miopenAcceleratorQueue_t <em>streamID</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv215miopenSetStream14miopenHandle_t24miopenAcceleratorQueue_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set accelerator command queue previously created. </p>
+<p>Set a command queue for an accelerator device <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">streamID</span></code>: An accelerator queue type </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopengetstream">
+<h2>miopenGetStream<a class="headerlink" href="#miopengetstream" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv215miopenGetStream14miopenHandle_tP24miopenAcceleratorQueue_t">
+<span id="miopenGetStream__miopenHandle_t.miopenAcceleratorQueue_tP"></span><span class="target" id="group__handle_1ga17e0f050b531eef76f7e6b173286e166"></span> <a class="reference internal" href="#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenGetStream</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, miopenAcceleratorQueue_t *<em>streamID</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv215miopenGetStream14miopenHandle_tP24miopenAcceleratorQueue_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the previously created accelerator command queue. </p>
+<p>Creates a command queue for an accelerator device <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">streamID</span></code>: Pointer to a accelerator queue type </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopengetkerneltime">
+<h2>miopenGetKernelTime<a class="headerlink" href="#miopengetkerneltime" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv219miopenGetKernelTime14miopenHandle_tPf">
+<span id="miopenGetKernelTime__miopenHandle_t.floatP"></span><span class="target" id="group__handle_1gab4a3aaa7fdb3bb4207157d0b84c40c2a"></span> <a class="reference internal" href="#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenGetKernelTime</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, float *<em>time</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv219miopenGetKernelTime14miopenHandle_tPf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get time for last kernel launched. </p>
+<p>This function is used only when profiling mode has been enabled. <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">time</span></code>: Pointer to a float type to contain kernel time in milliseconds </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopenenableprofiling">
+<h2>miopenEnableProfiling<a class="headerlink" href="#miopenenableprofiling" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv221miopenEnableProfiling14miopenHandle_tb">
+<span id="miopenEnableProfiling__miopenHandle_t.b"></span><span class="target" id="group__handle_1gac14bff4cc1828e233e9966fb1386a1f7"></span> <a class="reference internal" href="#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenEnableProfiling</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, bool <em>enable</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv221miopenEnableProfiling14miopenHandle_tb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Enable profiling to retrieve kernel time. </p>
+<p>Enable or disable kernel profiling. This profiling is only for kernel time. <dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">enable</span></code>: Boolean to toggle profiling </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tensor.html" class="btn btn-neutral float-right" title="Tensors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="apireference.html" class="btn btn-neutral" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Advanced Micro Devices, Inc.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

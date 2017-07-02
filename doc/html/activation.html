@@ -1,0 +1,527 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Activation Layers &mdash; MIOpen: AMD&#39;s deep learning library</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="MIOpen: AMD&#39;s deep learning library" href="index.html"/>
+        <link rel="up" title="API Reference" href="apireference.html"/>
+        <link rel="next" title="Convolutional Layer" href="convolution.html"/>
+        <link rel="prev" title="Tensors" href="tensor.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MIOpen
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">MIOpen</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#backends">Backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#configure-with-cmake">Configure with cmake</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install.html#for-opencl-run">For OpenCL, run:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#for-hip-run">For HIP, run:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#building-the-library">Building the library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#building-the-driver">Building the driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#running-the-tests">Running the tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#building-the-documentation">Building the documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="apireference.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="handle.html">Handle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopenstatus-t">miopenStatus_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopencreate">miopenCreate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopencreatewithstream">miopenCreateWithStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopendestroy">miopenDestroy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopensetstream">miopenSetStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopengetstream">miopenGetStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopengetkerneltime">miopenGetKernelTime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopenenableprofiling">miopenEnableProfiling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopendatatype-t">miopenDataType_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopentensorop-t">miopenTensorOp_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopencreatetensordescriptor">miopenCreateTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopenset4dtensordescriptor">miopenSet4dTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopenget4dtensordescriptor">miopenGet4dTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopensettensordescriptor">miopenSetTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopengettensordescriptorsize">miopenGetTensorDescriptorSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopengettensordescriptor">miopenGetTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopendestroytensordescriptor">miopenDestroyTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopenoptensor">miopenOpTensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopensettensor">miopenSetTensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopenscaletensor">miopenScaleTensor</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Activation Layers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#miopenactivationmode-t">miopenActivationMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopensetactivationdescriptor">miopenSetActivationDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopengetactivationdescriptor">miopenGetActivationDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenactivationforward">miopenActivationForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenactivationbackward">miopenActivationBackward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopendestroyactivationdescriptor">miopenDestroyActivationDescriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="convolution.html">Convolutional Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionmode-t">miopenConvolutionMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvfwdalgorithm-t">miopenConvFwdAlgorithm_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvbwdweightsalgorithm-t">miopenConvBwdWeightsAlgorithm_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvbwddataalgorithm-t">miopenConvBwdDataAlgorithm_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvalgoperf-t">miopenConvAlgoPerf_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopencreateconvolutiondescriptor">miopenCreateConvolutionDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopeninitconvolutiondescriptor">miopenInitConvolutionDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopengetconvolutiondescriptor">miopenGetConvolutionDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopengetconvolutionforwardoutputdim">miopenGetConvolutionForwardOutputDim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionforwardgetworkspacesize">miopenConvolutionForwardGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenfindconvolutionforwardalgorithm">miopenFindConvolutionForwardAlgorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionforward">miopenConvolutionForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionforwardbias">miopenConvolutionForwardBias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenfindconvolutionbackwarddataalgorithm">miopenFindConvolutionBackwardDataAlgorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionbackwarddata">miopenConvolutionBackwardData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionbackwarddatagetworkspacesize">miopenConvolutionBackwardDataGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionbackwardweightsgetworkspacesize">miopenConvolutionBackwardWeightsGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenfindconvolutionbackwardweightsalgorithm">miopenFindConvolutionBackwardWeightsAlgorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionbackwardweights">miopenConvolutionBackwardWeights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopenconvolutionbackwardbias">miopenConvolutionBackwardBias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convolution.html#miopendestroyconvolutiondescriptor">miopenDestroyConvolutionDescriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pooling.html">Pooling Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenpoolingmode-t">miopenPoolingMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopencreatepoolingdescriptor">miopenCreatePoolingDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenset2dpoolingdescriptor">miopenSet2dPoolingDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenget2dpoolingdescriptor">miopenGet2dPoolingDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopengetpoolingforwardoutputdim">miopenGetPoolingForwardOutputDim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenpoolinggetworkspacesize">miopenPoolingGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenpoolingforward">miopenPoolingForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenpoolingbackward">miopenPoolingBackward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopendestroypoolingdescriptor">miopenDestroyPoolingDescriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="softmax.html">Softmax Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="softmax.html#miopensoftmaxforward">miopenSoftmaxForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="softmax.html#miopensoftmaxbackward">miopenSoftmaxBackward</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lrn.html">Local Response Normalization Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopenlrnmode-t">miopenLRNMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopencreatelrndescriptor">miopenCreateLRNDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopensetlrndescriptor">miopenSetLRNDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopengetlrndescriptor">miopenGetLRNDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopenlrngetworkspacesize">miopenLRNGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopenlrnforward">miopenLRNForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopenlrnbackward">miopenLRNBackward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopendestroylrndescriptor">miopenDestroyLRNDescriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="batchnorm.html">Batch Normalization Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="batchnorm.html#miopenbatchnormmode-t">miopenBatchNormMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batchnorm.html#miopenderivebntensordescriptor">miopenDeriveBNTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batchnorm.html#miopenbatchnormalizationforwardtraining">miopenBatchNormalizationForwardTraining</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batchnorm.html#miopenbatchnormalizationforwardinference">miopenBatchNormalizationForwardInference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batchnorm.html#miopenbatchnormalizationbackward">miopenBatchNormalizationBackward</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gemm.html">GEMM Operations</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MIOpen</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="apireference.html">API Reference</a> &raquo;</li>
+        
+      <li>Activation Layers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/activation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="activation-layers">
+<h1>Activation Layers<a class="headerlink" href="#activation-layers" title="Permalink to this headline">¶</a></h1>
+<p>Activation types and layers.</p>
+<div class="section" id="miopenactivationmode-t">
+<h2>miopenActivationMode_t<a class="headerlink" href="#miopenactivationmode-t" title="Permalink to this headline">¶</a></h2>
+<dl class="type">
+<dt id="_CPPv222miopenActivationMode_t">
+<span id="miopenActivationMode_t"></span><span class="target" id="group__activation_1ga5fd27264d844b20dd8d63ab678f09af6"></span><em class="property">enum </em><code class="descclassname"></code><code class="descname">miopenActivationMode_t</code><a class="headerlink" href="#_CPPv222miopenActivationMode_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Activation layer modes </p>
+<p><em>Values:</em></p>
+<dl class="member">
+<dt id="_CPPv223miopenActivationPATHTRU">
+<span id="miopenActivationPATHTRU"></span><span class="target" id="miopen_8h_1ga5fd27264d844b20dd8d63ab678f09af6a788c230584b29f70b247d52c485844b5"></span><code class="descname">miopenActivationPATHTRU</code> = 0<a class="headerlink" href="#_CPPv223miopenActivationPATHTRU" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>No activation, pass through the data </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv224miopenActivationLOGISTIC">
+<span id="miopenActivationLOGISTIC"></span><span class="target" id="miopen_8h_1ga5fd27264d844b20dd8d63ab678f09af6a4a7e7a529bed5bc42fc4966d47ea29b4"></span><code class="descname">miopenActivationLOGISTIC</code> = 1<a class="headerlink" href="#_CPPv224miopenActivationLOGISTIC" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sigmoid function: <span class="math">\(1 / (1 + e^{-x})\)</span> </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv220miopenActivationTANH">
+<span id="miopenActivationTANH"></span><span class="target" id="miopen_8h_1ga5fd27264d844b20dd8d63ab678f09af6aebc2804e6806816dc8db6554d0c670b2"></span><code class="descname">miopenActivationTANH</code> = 2<a class="headerlink" href="#_CPPv220miopenActivationTANH" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Tanh activation <span class="math">\( \alpha * tanh( \beta * x) \)</span> </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv220miopenActivationRELU">
+<span id="miopenActivationRELU"></span><span class="target" id="miopen_8h_1ga5fd27264d844b20dd8d63ab678f09af6a66fb3d3c74e40e1e1a460fb409be62c0"></span><code class="descname">miopenActivationRELU</code> = 3<a class="headerlink" href="#_CPPv220miopenActivationRELU" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Rectified Linear Unit <span class="math">\( max(0, x) \)</span> </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv224miopenActivationSOFTRELU">
+<span id="miopenActivationSOFTRELU"></span><span class="target" id="miopen_8h_1ga5fd27264d844b20dd8d63ab678f09af6ad022a217df2f21174c4d515294f0e727"></span><code class="descname">miopenActivationSOFTRELU</code> = 4<a class="headerlink" href="#_CPPv224miopenActivationSOFTRELU" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><span class="math">\(log(1 + e^x)\)</span> </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv219miopenActivationABS">
+<span id="miopenActivationABS"></span><span class="target" id="miopen_8h_1ga5fd27264d844b20dd8d63ab678f09af6a481c9203a79996016e88e0b1baee55b5"></span><code class="descname">miopenActivationABS</code> = 5<a class="headerlink" href="#_CPPv219miopenActivationABS" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Absolute value <span class="math">\(abs(x)\)</span> </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv221miopenActivationPOWER">
+<span id="miopenActivationPOWER"></span><span class="target" id="miopen_8h_1ga5fd27264d844b20dd8d63ab678f09af6a7dbe18fe7783fcf9bb4e46d34b8e1d51"></span><code class="descname">miopenActivationPOWER</code> = 6<a class="headerlink" href="#_CPPv221miopenActivationPOWER" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Scaled and shifted power <span class="math">\((\alpha + \beta * x)^{power}\)</span> </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="miopensetactivationdescriptor">
+<h2>miopenSetActivationDescriptor<a class="headerlink" href="#miopensetactivationdescriptor" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv229miopenSetActivationDescriptorK28miopenActivationDescriptor_t22miopenActivationMode_tddd">
+<span id="miopenSetActivationDescriptor__miopenActivationDescriptor_tC.miopenActivationMode_t.double.double.double"></span><span class="target" id="group__activation_1gaae5ffa18eae9859d07faf6b9c359a164"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenSetActivationDescriptor</code><span class="sig-paren">(</span><em class="property">const</em> miopenActivationDescriptor_t <em>activDesc</em>, <a class="reference internal" href="#_CPPv222miopenActivationMode_t" title="miopenActivationMode_t">miopenActivationMode_t</a> <em>mode</em>, double <em>activAlpha</em>, double <em>activBeta</em>, double <em>activPower</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv229miopenSetActivationDescriptorK28miopenActivationDescriptor_t22miopenActivationMode_tddd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sets the activation layer descriptor details. </p>
+<p>Sets all of the descriptor details for the activation layer</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">activDesc</span></code>: Pointer to a activation layer descriptor </li>
+<li><code class="docutils literal"><span class="pre">mode</span></code>: Activation mode enum </li>
+<li><code class="docutils literal"><span class="pre">activAlpha</span></code>: Alpha value for some activation modes </li>
+<li><code class="docutils literal"><span class="pre">activBeta</span></code>: Beta value for some activation modes </li>
+<li><code class="docutils literal"><span class="pre">activPower</span></code>: Power exponent value for some activation modes </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopengetactivationdescriptor">
+<h2>miopenGetActivationDescriptor<a class="headerlink" href="#miopengetactivationdescriptor" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv229miopenGetActivationDescriptorK28miopenActivationDescriptor_tP22miopenActivationMode_tPdPdPd">
+<span id="miopenGetActivationDescriptor__miopenActivationDescriptor_tC.miopenActivationMode_tP.doubleP.doubleP.doubleP"></span><span class="target" id="group__activation_1ga5bb6585ced029ef05ba4b359d52c0463"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenGetActivationDescriptor</code><span class="sig-paren">(</span><em class="property">const</em> miopenActivationDescriptor_t <em>activDesc</em>, <a class="reference internal" href="#_CPPv222miopenActivationMode_t" title="miopenActivationMode_t">miopenActivationMode_t</a> *<em>mode</em>, double *<em>activAlpha</em>, double *<em>activBeta</em>, double *<em>activPower</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv229miopenGetActivationDescriptorK28miopenActivationDescriptor_tP22miopenActivationMode_tPdPdPd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Gets the activation layer descriptor details. </p>
+<p>Retrieves all of the descriptor details for the activation layer</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">activDesc</span></code>: Pointer to a activation layer descriptor </li>
+<li><code class="docutils literal"><span class="pre">mode</span></code>: Activation mode enum </li>
+<li><code class="docutils literal"><span class="pre">activAlpha</span></code>: Alpha value for some activation modes </li>
+<li><code class="docutils literal"><span class="pre">activBeta</span></code>: Beta value for some activation modes </li>
+<li><code class="docutils literal"><span class="pre">activPower</span></code>: Power exponent value for some activation modes </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopenactivationforward">
+<h2>miopenActivationForward<a class="headerlink" href="#miopenactivationforward" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv223miopenActivationForward14miopenHandle_tK28miopenActivationDescriptor_tPKvK24miopenTensorDescriptor_tPKvPKvK24miopenTensorDescriptor_tPv">
+<span id="miopenActivationForward__miopenHandle_t.miopenActivationDescriptor_tC.voidCP.miopenTensorDescriptor_tC.voidCP.voidCP.miopenTensorDescriptor_tC.voidP"></span><span class="target" id="group__activation_1ga3ab72393dc27d40ae317558c68ddffdd"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenActivationForward</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, <em class="property">const</em> miopenActivationDescriptor_t <em>activDesc</em>, <em class="property">const</em> void *<em>alpha</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>xDesc</em>, <em class="property">const</em> void *<em>x</em>, <em class="property">const</em> void *<em>beta</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>yDesc</em>, void *<em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv223miopenActivationForward14miopenHandle_tK28miopenActivationDescriptor_tPKvK24miopenTensorDescriptor_tPKvPKvK24miopenTensorDescriptor_tPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Execute an activation forward layer. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">activDesc</span></code>: Descriptor for LRN layer </li>
+<li><code class="docutils literal"><span class="pre">alpha</span></code>: Scaling factor, always equal to 1 </li>
+<li><code class="docutils literal"><span class="pre">xDesc</span></code>: Tensor descriptor for data input tensor x </li>
+<li><code class="docutils literal"><span class="pre">x</span></code>: Data tensor x </li>
+<li><code class="docutils literal"><span class="pre">beta</span></code>: Shift factor, always equal to 0 </li>
+<li><code class="docutils literal"><span class="pre">yDesc</span></code>: Tensor descriptor for output data tensor y </li>
+<li><code class="docutils literal"><span class="pre">y</span></code>: Data tensor y </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopenactivationbackward">
+<h2>miopenActivationBackward<a class="headerlink" href="#miopenactivationbackward" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv224miopenActivationBackward14miopenHandle_tK28miopenActivationDescriptor_tPKvK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPKvPKvK24miopenTensorDescriptor_tPv">
+<span id="miopenActivationBackward__miopenHandle_t.miopenActivationDescriptor_tC.voidCP.miopenTensorDescriptor_tC.voidCP.miopenTensorDescriptor_tC.voidCP.miopenTensorDescriptor_tC.voidCP.voidCP.miopenTensorDescriptor_tC.voidP"></span><span class="target" id="group__activation_1ga24dde83667b3bf0017329f4c5b5fb255"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenActivationBackward</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, <em class="property">const</em> miopenActivationDescriptor_t <em>activDesc</em>, <em class="property">const</em> void *<em>alpha</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>yDesc</em>, <em class="property">const</em> void *<em>y</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>dyDesc</em>, <em class="property">const</em> void *<em>dy</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>xDesc</em>, <em class="property">const</em> void *<em>x</em>, <em class="property">const</em> void *<em>beta</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>dxDesc</em>, void *<em>dx</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv224miopenActivationBackward14miopenHandle_tK28miopenActivationDescriptor_tPKvK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPKvPKvK24miopenTensorDescriptor_tPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Execute a activation backwards layer. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">activDesc</span></code>: Descriptor for activation layer </li>
+<li><code class="docutils literal"><span class="pre">alpha</span></code>: Scaling factor, always equal to 1 </li>
+<li><code class="docutils literal"><span class="pre">yDesc</span></code>: Tensor descriptor for input data tensor y </li>
+<li><code class="docutils literal"><span class="pre">y</span></code>: Data tensor y </li>
+<li><code class="docutils literal"><span class="pre">dyDesc</span></code>: Tensor descriptor for input data tensor dy </li>
+<li><code class="docutils literal"><span class="pre">dy</span></code>: Data delta tensor dy </li>
+<li><code class="docutils literal"><span class="pre">xDesc</span></code>: Tensor descriptor for data input tensor x </li>
+<li><code class="docutils literal"><span class="pre">x</span></code>: Data tensor x </li>
+<li><code class="docutils literal"><span class="pre">beta</span></code>: Shift factor, always equal to 0 </li>
+<li><code class="docutils literal"><span class="pre">dxDesc</span></code>: Tensor descriptor for data output tensor dx </li>
+<li><code class="docutils literal"><span class="pre">dx</span></code>: Output data delta tensor dx </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopendestroyactivationdescriptor">
+<h2>miopenDestroyActivationDescriptor<a class="headerlink" href="#miopendestroyactivationdescriptor" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv233miopenDestroyActivationDescriptor28miopenActivationDescriptor_t">
+<span id="miopenDestroyActivationDescriptor__miopenActivationDescriptor_t"></span><span class="target" id="group__activation_1ga6cfa7f81de93c9953f4ede2634259814"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenDestroyActivationDescriptor</code><span class="sig-paren">(</span>miopenActivationDescriptor_t <em>activDesc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv233miopenDestroyActivationDescriptor28miopenActivationDescriptor_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Destroys the activation descriptor object. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">activDesc</span></code>: Activation tensor descriptor type </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="convolution.html" class="btn btn-neutral float-right" title="Convolutional Layer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tensor.html" class="btn btn-neutral" title="Tensors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Advanced Micro Devices, Inc.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

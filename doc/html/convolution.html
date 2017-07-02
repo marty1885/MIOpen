@@ -1,0 +1,915 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Convolutional Layer &mdash; MIOpen: AMD&#39;s deep learning library</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="MIOpen: AMD&#39;s deep learning library" href="index.html"/>
+        <link rel="up" title="API Reference" href="apireference.html"/>
+        <link rel="next" title="Pooling Layer" href="pooling.html"/>
+        <link rel="prev" title="Activation Layers" href="activation.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MIOpen
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">MIOpen</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#backends">Backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#configure-with-cmake">Configure with cmake</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install.html#for-opencl-run">For OpenCL, run:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#for-hip-run">For HIP, run:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#building-the-library">Building the library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#building-the-driver">Building the driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#running-the-tests">Running the tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#building-the-documentation">Building the documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="apireference.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="handle.html">Handle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopenstatus-t">miopenStatus_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopencreate">miopenCreate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopencreatewithstream">miopenCreateWithStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopendestroy">miopenDestroy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopensetstream">miopenSetStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopengetstream">miopenGetStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopengetkerneltime">miopenGetKernelTime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="handle.html#miopenenableprofiling">miopenEnableProfiling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopendatatype-t">miopenDataType_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopentensorop-t">miopenTensorOp_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopencreatetensordescriptor">miopenCreateTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopenset4dtensordescriptor">miopenSet4dTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopenget4dtensordescriptor">miopenGet4dTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopensettensordescriptor">miopenSetTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopengettensordescriptorsize">miopenGetTensorDescriptorSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopengettensordescriptor">miopenGetTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopendestroytensordescriptor">miopenDestroyTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopenoptensor">miopenOpTensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopensettensor">miopenSetTensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tensor.html#miopenscaletensor">miopenScaleTensor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="activation.html">Activation Layers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="activation.html#miopenactivationmode-t">miopenActivationMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="activation.html#miopensetactivationdescriptor">miopenSetActivationDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="activation.html#miopengetactivationdescriptor">miopenGetActivationDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="activation.html#miopenactivationforward">miopenActivationForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="activation.html#miopenactivationbackward">miopenActivationBackward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="activation.html#miopendestroyactivationdescriptor">miopenDestroyActivationDescriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Convolutional Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#miopenconvolutionmode-t">miopenConvolutionMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenconvfwdalgorithm-t">miopenConvFwdAlgorithm_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenconvbwdweightsalgorithm-t">miopenConvBwdWeightsAlgorithm_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenconvbwddataalgorithm-t">miopenConvBwdDataAlgorithm_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenconvalgoperf-t">miopenConvAlgoPerf_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopencreateconvolutiondescriptor">miopenCreateConvolutionDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopeninitconvolutiondescriptor">miopenInitConvolutionDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopengetconvolutiondescriptor">miopenGetConvolutionDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopengetconvolutionforwardoutputdim">miopenGetConvolutionForwardOutputDim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenconvolutionforwardgetworkspacesize">miopenConvolutionForwardGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenfindconvolutionforwardalgorithm">miopenFindConvolutionForwardAlgorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenconvolutionforward">miopenConvolutionForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenconvolutionforwardbias">miopenConvolutionForwardBias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenfindconvolutionbackwarddataalgorithm">miopenFindConvolutionBackwardDataAlgorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenconvolutionbackwarddata">miopenConvolutionBackwardData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenconvolutionbackwarddatagetworkspacesize">miopenConvolutionBackwardDataGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenconvolutionbackwardweightsgetworkspacesize">miopenConvolutionBackwardWeightsGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenfindconvolutionbackwardweightsalgorithm">miopenFindConvolutionBackwardWeightsAlgorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenconvolutionbackwardweights">miopenConvolutionBackwardWeights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopenconvolutionbackwardbias">miopenConvolutionBackwardBias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miopendestroyconvolutiondescriptor">miopenDestroyConvolutionDescriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pooling.html">Pooling Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenpoolingmode-t">miopenPoolingMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopencreatepoolingdescriptor">miopenCreatePoolingDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenset2dpoolingdescriptor">miopenSet2dPoolingDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenget2dpoolingdescriptor">miopenGet2dPoolingDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopengetpoolingforwardoutputdim">miopenGetPoolingForwardOutputDim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenpoolinggetworkspacesize">miopenPoolingGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenpoolingforward">miopenPoolingForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopenpoolingbackward">miopenPoolingBackward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pooling.html#miopendestroypoolingdescriptor">miopenDestroyPoolingDescriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="softmax.html">Softmax Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="softmax.html#miopensoftmaxforward">miopenSoftmaxForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="softmax.html#miopensoftmaxbackward">miopenSoftmaxBackward</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lrn.html">Local Response Normalization Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopenlrnmode-t">miopenLRNMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopencreatelrndescriptor">miopenCreateLRNDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopensetlrndescriptor">miopenSetLRNDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopengetlrndescriptor">miopenGetLRNDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopenlrngetworkspacesize">miopenLRNGetWorkSpaceSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopenlrnforward">miopenLRNForward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopenlrnbackward">miopenLRNBackward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lrn.html#miopendestroylrndescriptor">miopenDestroyLRNDescriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="batchnorm.html">Batch Normalization Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="batchnorm.html#miopenbatchnormmode-t">miopenBatchNormMode_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batchnorm.html#miopenderivebntensordescriptor">miopenDeriveBNTensorDescriptor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batchnorm.html#miopenbatchnormalizationforwardtraining">miopenBatchNormalizationForwardTraining</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batchnorm.html#miopenbatchnormalizationforwardinference">miopenBatchNormalizationForwardInference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batchnorm.html#miopenbatchnormalizationbackward">miopenBatchNormalizationBackward</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gemm.html">GEMM Operations</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MIOpen</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="apireference.html">API Reference</a> &raquo;</li>
+        
+      <li>Convolutional Layer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/convolution.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="convolutional-layer">
+<h1>Convolutional Layer<a class="headerlink" href="#convolutional-layer" title="Permalink to this headline">¶</a></h1>
+<p>The convolution layer API documentation</p>
+<div class="section" id="miopenconvolutionmode-t">
+<h2>miopenConvolutionMode_t<a class="headerlink" href="#miopenconvolutionmode-t" title="Permalink to this headline">¶</a></h2>
+<dl class="type">
+<dt id="_CPPv223miopenConvolutionMode_t">
+<span id="miopenConvolutionMode_t"></span><span class="target" id="group__convolutions_1ga91bcbdad0e53c07078287a74799c88cd"></span><em class="property">enum </em><code class="descclassname"></code><code class="descname">miopenConvolutionMode_t</code><a class="headerlink" href="#_CPPv223miopenConvolutionMode_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Convolution mode selection for convolution layer preference </p>
+<p><em>Values:</em></p>
+<dl class="member">
+<dt id="_CPPv217miopenConvolution">
+<span id="miopenConvolution"></span><span class="target" id="miopen_8h_1ga91bcbdad0e53c07078287a74799c88cdaf5c5ca99ec760a1d1016a671408766bc"></span><code class="descname">miopenConvolution</code> = 0<a class="headerlink" href="#_CPPv217miopenConvolution" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Convolutions </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv215miopenTranspose">
+<span id="miopenTranspose"></span><span class="target" id="miopen_8h_1ga91bcbdad0e53c07078287a74799c88cdaaa6f0f5913493a335cbb4389c66f4736"></span><code class="descname">miopenTranspose</code> = 1<a class="headerlink" href="#_CPPv215miopenTranspose" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Transpose convolutions </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="miopenconvfwdalgorithm-t">
+<h2>miopenConvFwdAlgorithm_t<a class="headerlink" href="#miopenconvfwdalgorithm-t" title="Permalink to this headline">¶</a></h2>
+<dl class="type">
+<dt id="_CPPv224miopenConvFwdAlgorithm_t">
+<span id="miopenConvFwdAlgorithm_t"></span><span class="target" id="group__convolutions_1ga5dd59dc3df4bcf9da4797c6169ad99c3"></span><em class="property">enum </em><code class="descclassname"></code><code class="descname">miopenConvFwdAlgorithm_t</code><a class="headerlink" href="#_CPPv224miopenConvFwdAlgorithm_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Convolutional algorithm mode for forward propagation. </p>
+<p><em>Values:</em></p>
+<dl class="member">
+<dt id="_CPPv228miopenConvolutionFwdAlgoGEMM">
+<span id="miopenConvolutionFwdAlgoGEMM"></span><span class="target" id="group__convolutions_1gga5dd59dc3df4bcf9da4797c6169ad99c3a61b89a58eb19fea2207a17531e8205f7"></span><code class="descname">miopenConvolutionFwdAlgoGEMM</code> = 0<a class="headerlink" href="#_CPPv228miopenConvolutionFwdAlgoGEMM" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GEMM variant </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv230miopenConvolutionFwdAlgoDirect">
+<span id="miopenConvolutionFwdAlgoDirect"></span><span class="target" id="group__convolutions_1gga5dd59dc3df4bcf9da4797c6169ad99c3ade2d29687c9fb8bf450d3c8b946e25b5"></span><code class="descname">miopenConvolutionFwdAlgoDirect</code> = 1<a class="headerlink" href="#_CPPv230miopenConvolutionFwdAlgoDirect" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Direct convolutions </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv227miopenConvolutionFwdAlgoFFT">
+<span id="miopenConvolutionFwdAlgoFFT"></span><span class="target" id="group__convolutions_1gga5dd59dc3df4bcf9da4797c6169ad99c3a154a04348f01564eff432c6432242f34"></span><code class="descname">miopenConvolutionFwdAlgoFFT</code> = 2<a class="headerlink" href="#_CPPv227miopenConvolutionFwdAlgoFFT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Fast Fourier Transform indirect convolutions </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv232miopenConvolutionFwdAlgoWinograd">
+<span id="miopenConvolutionFwdAlgoWinograd"></span><span class="target" id="group__convolutions_1gga5dd59dc3df4bcf9da4797c6169ad99c3a9e831d6f4b3ab127f370c3a3e55b2abf"></span><code class="descname">miopenConvolutionFwdAlgoWinograd</code> = 3<a class="headerlink" href="#_CPPv232miopenConvolutionFwdAlgoWinograd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Winograd indirect convolutions </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="miopenconvbwdweightsalgorithm-t">
+<h2>miopenConvBwdWeightsAlgorithm_t<a class="headerlink" href="#miopenconvbwdweightsalgorithm-t" title="Permalink to this headline">¶</a></h2>
+<dl class="type">
+<dt id="_CPPv231miopenConvBwdWeightsAlgorithm_t">
+<span id="miopenConvBwdWeightsAlgorithm_t"></span><span class="target" id="group__convolutions_1gaba316771c206839e54419b135027cbee"></span><em class="property">enum </em><code class="descclassname"></code><code class="descname">miopenConvBwdWeightsAlgorithm_t</code><a class="headerlink" href="#_CPPv231miopenConvBwdWeightsAlgorithm_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Convolutional algorithm mode for back propagation on weights. </p>
+<p><em>Values:</em></p>
+<dl class="member">
+<dt id="_CPPv235miopenConvolutionBwdWeightsAlgoGEMM">
+<span id="miopenConvolutionBwdWeightsAlgoGEMM"></span><span class="target" id="group__convolutions_1ggaba316771c206839e54419b135027cbeea4302eada3444370b4f5a516c9352c19e"></span><code class="descname">miopenConvolutionBwdWeightsAlgoGEMM</code> = 0<a class="headerlink" href="#_CPPv235miopenConvolutionBwdWeightsAlgoGEMM" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GEMM variant </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv237miopenConvolutionBwdWeightsAlgoDirect">
+<span id="miopenConvolutionBwdWeightsAlgoDirect"></span><span class="target" id="group__convolutions_1ggaba316771c206839e54419b135027cbeeacd485d0cbd7838b89bcbaa86add7fd44"></span><code class="descname">miopenConvolutionBwdWeightsAlgoDirect</code> = 1<a class="headerlink" href="#_CPPv237miopenConvolutionBwdWeightsAlgoDirect" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Direct convolution algorithm </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="miopenconvbwddataalgorithm-t">
+<h2>miopenConvBwdDataAlgorithm_t<a class="headerlink" href="#miopenconvbwddataalgorithm-t" title="Permalink to this headline">¶</a></h2>
+<dl class="type">
+<dt id="_CPPv228miopenConvBwdDataAlgorithm_t">
+<span id="miopenConvBwdDataAlgorithm_t"></span><span class="target" id="group__convolutions_1ga774e44db42d175d73c0d87272f6cdc05"></span><em class="property">enum </em><code class="descclassname"></code><code class="descname">miopenConvBwdDataAlgorithm_t</code><a class="headerlink" href="#_CPPv228miopenConvBwdDataAlgorithm_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Convolutional algorithm mode for back propagation on data. </p>
+<p><em>Values:</em></p>
+<dl class="member">
+<dt id="_CPPv232miopenConvolutionBwdDataAlgoGEMM">
+<span id="miopenConvolutionBwdDataAlgoGEMM"></span><span class="target" id="group__convolutions_1gga774e44db42d175d73c0d87272f6cdc05a1ea94b2548956ecbb6d6aaead535a38a"></span><code class="descname">miopenConvolutionBwdDataAlgoGEMM</code> = 0<a class="headerlink" href="#_CPPv232miopenConvolutionBwdDataAlgoGEMM" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>GEMM variant </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv234miopenConvolutionBwdDataAlgoDirect">
+<span id="miopenConvolutionBwdDataAlgoDirect"></span><span class="target" id="group__convolutions_1gga774e44db42d175d73c0d87272f6cdc05a123132561c7ebe6a6d022016bc395658"></span><code class="descname">miopenConvolutionBwdDataAlgoDirect</code> = 1<a class="headerlink" href="#_CPPv234miopenConvolutionBwdDataAlgoDirect" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Direct convolutions </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv231miopenConvolutionBwdDataAlgoFFT">
+<span id="miopenConvolutionBwdDataAlgoFFT"></span><span class="target" id="group__convolutions_1gga774e44db42d175d73c0d87272f6cdc05a3c26d3cccb4763cc3370b72f71f11f72"></span><code class="descname">miopenConvolutionBwdDataAlgoFFT</code> = 2<a class="headerlink" href="#_CPPv231miopenConvolutionBwdDataAlgoFFT" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Fast Fourier Transform indirect convolutions </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv236miopenConvolutionBwdDataAlgoWinograd">
+<span id="miopenConvolutionBwdDataAlgoWinograd"></span><span class="target" id="group__convolutions_1gga774e44db42d175d73c0d87272f6cdc05ae4f98a414a6b1be0e14a9912b0459f54"></span><code class="descname">miopenConvolutionBwdDataAlgoWinograd</code> = 3<a class="headerlink" href="#_CPPv236miopenConvolutionBwdDataAlgoWinograd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Winograd indirect convolutions </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv230miopenTransposeBwdDataAlgoGEMM">
+<span id="miopenTransposeBwdDataAlgoGEMM"></span><span class="target" id="group__convolutions_1gga774e44db42d175d73c0d87272f6cdc05a0259649d7b2d71a88231257add330ea1"></span><code class="descname">miopenTransposeBwdDataAlgoGEMM</code> = 4<a class="headerlink" href="#_CPPv230miopenTransposeBwdDataAlgoGEMM" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Transpose GEMM variant </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="miopenconvalgoperf-t">
+<h2>miopenConvAlgoPerf_t<a class="headerlink" href="#miopenconvalgoperf-t" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv220miopenConvAlgoPerf_t">
+<span id="miopenConvAlgoPerf_t"></span><span class="target" id="structmiopenConvAlgoPerf__t"></span><em class="property">struct </em><code class="descclassname"></code><code class="descname">miopenConvAlgoPerf_t</code><a class="headerlink" href="#_CPPv220miopenConvAlgoPerf_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Perf struct for forward, backward filter, or backward data algorithms. </p>
+<p>Contains the union to hold the selected convolution algorithm for forward, or backwards layers. Also contains the time it took to run the algorithm and the workspace required to run the algorithm. </p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopencreateconvolutiondescriptor">
+<h2>miopenCreateConvolutionDescriptor<a class="headerlink" href="#miopencreateconvolutiondescriptor" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv233miopenCreateConvolutionDescriptorP29miopenConvolutionDescriptor_t">
+<span id="miopenCreateConvolutionDescriptor__miopenConvolutionDescriptor_tP"></span><span class="target" id="group__convolutions_1ga4aff69faa0bacd108ae1aed8f3fedf0d"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenCreateConvolutionDescriptor</code><span class="sig-paren">(</span>miopenConvolutionDescriptor_t *<em>convDesc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv233miopenCreateConvolutionDescriptorP29miopenConvolutionDescriptor_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a convolution layer descriptor. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">convDesc</span></code>: Convolution layer descriptor </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopeninitconvolutiondescriptor">
+<h2>miopenInitConvolutionDescriptor<a class="headerlink" href="#miopeninitconvolutiondescriptor" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv231miopenInitConvolutionDescriptor29miopenConvolutionDescriptor_t23miopenConvolutionMode_tiiiiii">
+<span id="miopenInitConvolutionDescriptor__miopenConvolutionDescriptor_t.miopenConvolutionMode_t.i.i.i.i.i.i"></span><span class="target" id="group__convolutions_1gae89a5e20fd924e4530116e8c9d6beeb0"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenInitConvolutionDescriptor</code><span class="sig-paren">(</span>miopenConvolutionDescriptor_t <em>convDesc</em>, <a class="reference internal" href="#_CPPv223miopenConvolutionMode_t" title="miopenConvolutionMode_t">miopenConvolutionMode_t</a> <em>mode</em>, int <em>pad_h</em>, int <em>pad_w</em>, int <em>u</em>, int <em>v</em>, int <em>dilation_h</em>, int <em>dilation_w</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv231miopenInitConvolutionDescriptor29miopenConvolutionDescriptor_t23miopenConvolutionMode_tiiiiii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Creates a convolution layer descriptor. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">convDesc</span></code>: Convolution layer descriptor </li>
+<li><code class="docutils literal"><span class="pre">mode</span></code>: Convolutional mode </li>
+<li><code class="docutils literal"><span class="pre">pad_h</span></code>: Height input data padding </li>
+<li><code class="docutils literal"><span class="pre">pad_w</span></code>: Width input data padding </li>
+<li><code class="docutils literal"><span class="pre">u</span></code>: Stride for the height of input data </li>
+<li><code class="docutils literal"><span class="pre">v</span></code>: Stride for the width of input data </li>
+<li><code class="docutils literal"><span class="pre">dilation_h</span></code>: Dilation height (only a value of 1 is currently supported) </li>
+<li><code class="docutils literal"><span class="pre">dilation_w</span></code>: Dilation width (only a value of 1 is currently supported) </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopengetconvolutiondescriptor">
+<h2>miopenGetConvolutionDescriptor<a class="headerlink" href="#miopengetconvolutiondescriptor" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv230miopenGetConvolutionDescriptor29miopenConvolutionDescriptor_tP23miopenConvolutionMode_tPiPiPiPiPiPi">
+<span id="miopenGetConvolutionDescriptor__miopenConvolutionDescriptor_t.miopenConvolutionMode_tP.iP.iP.iP.iP.iP.iP"></span><span class="target" id="group__convolutions_1ga11fe9f2c5459150aebb5c5181b793764"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenGetConvolutionDescriptor</code><span class="sig-paren">(</span>miopenConvolutionDescriptor_t <em>convDesc</em>, <a class="reference internal" href="#_CPPv223miopenConvolutionMode_t" title="miopenConvolutionMode_t">miopenConvolutionMode_t</a> *<em>mode</em>, int *<em>pad_h</em>, int *<em>pad_w</em>, int *<em>u</em>, int *<em>v</em>, int *<em>dilation_h</em>, int *<em>dilation_w</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv230miopenGetConvolutionDescriptor29miopenConvolutionDescriptor_tP23miopenConvolutionMode_tPiPiPiPiPiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Retrieves a convolution layer descriptor’s details. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">convDesc</span></code>: Convolution layer descriptor </li>
+<li><code class="docutils literal"><span class="pre">mode</span></code>: Convolutional mode </li>
+<li><code class="docutils literal"><span class="pre">pad_h</span></code>: Height input data padding </li>
+<li><code class="docutils literal"><span class="pre">pad_w</span></code>: Width input data padding </li>
+<li><code class="docutils literal"><span class="pre">u</span></code>: Stride for the height of input data </li>
+<li><code class="docutils literal"><span class="pre">v</span></code>: Stride for the width of input data </li>
+<li><code class="docutils literal"><span class="pre">dilation_h</span></code>: Dilation height (only a value of 1 is currently supported) </li>
+<li><code class="docutils literal"><span class="pre">dilation_w</span></code>: Dilation widdth (only a value of 1 is currently supported) </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopengetconvolutionforwardoutputdim">
+<h2>miopenGetConvolutionForwardOutputDim<a class="headerlink" href="#miopengetconvolutionforwardoutputdim" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv236miopenGetConvolutionForwardOutputDim29miopenConvolutionDescriptor_tK24miopenTensorDescriptor_tK24miopenTensorDescriptor_tPiPiPiPi">
+<span id="miopenGetConvolutionForwardOutputDim__miopenConvolutionDescriptor_t.miopenTensorDescriptor_tC.miopenTensorDescriptor_tC.iP.iP.iP.iP"></span><span class="target" id="group__convolutions_1gaa0fffd063dd2d5da15c2829596637d30"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenGetConvolutionForwardOutputDim</code><span class="sig-paren">(</span>miopenConvolutionDescriptor_t <em>convDesc</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>inputTensorDesc</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>filterDesc</em>, int *<em>n</em>, int *<em>c</em>, int *<em>h</em>, int *<em>w</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv236miopenGetConvolutionForwardOutputDim29miopenConvolutionDescriptor_tK24miopenTensorDescriptor_tK24miopenTensorDescriptor_tPiPiPiPi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the shape of a resulting 4-D tensor from a 2-D convolution. </p>
+<p>This function returns the dimensions of the resulting 4D tensor of a 2D convolution, given the convolution descriptor, the input tensor descriptor and the filter descriptor This function can help to setup the output tensor and allocate the proper amount of memory prior to launch the actual convolution.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">convDesc</span></code>: Convolution layer descriptor </li>
+<li><code class="docutils literal"><span class="pre">inputTensorDesc</span></code>: Input data tensor descriptor </li>
+<li><code class="docutils literal"><span class="pre">filterDesc</span></code>: Weight descriptor </li>
+<li><code class="docutils literal"><span class="pre">n</span></code>: Mini-batch size </li>
+<li><code class="docutils literal"><span class="pre">c</span></code>: Number of channels </li>
+<li><code class="docutils literal"><span class="pre">h</span></code>: Data height dimension size </li>
+<li><code class="docutils literal"><span class="pre">w</span></code>: Data width dimension size </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopenconvolutionforwardgetworkspacesize">
+<h2>miopenConvolutionForwardGetWorkSpaceSize<a class="headerlink" href="#miopenconvolutionforwardgetworkspacesize" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv240miopenConvolutionForwardGetWorkSpaceSize14miopenHandle_tK24miopenTensorDescriptor_tK24miopenTensorDescriptor_tK29miopenConvolutionDescriptor_tK24miopenTensorDescriptor_tP6size_t">
+<span id="miopenConvolutionForwardGetWorkSpaceSize__miopenHandle_t.miopenTensorDescriptor_tC.miopenTensorDescriptor_tC.miopenConvolutionDescriptor_tC.miopenTensorDescriptor_tC.sP"></span><span class="target" id="group__convolutions_1ga0e0db6c9c7d58dceaa2e38627bc8bca6"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenConvolutionForwardGetWorkSpaceSize</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>wDesc</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>xDesc</em>, <em class="property">const</em> miopenConvolutionDescriptor_t <em>convDesc</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>yDesc</em>, size_t *<em>workSpaceSize</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv240miopenConvolutionForwardGetWorkSpaceSize14miopenHandle_tK24miopenTensorDescriptor_tK24miopenTensorDescriptor_tK29miopenConvolutionDescriptor_tK24miopenTensorDescriptor_tP6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Query the workspace size required for a forward convolution layer. </p>
+<p>This call is required for running the convolutional layers and for running the findConvolution functions.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">wDesc</span></code>: Tensor descriptor for weight tensor w </li>
+<li><code class="docutils literal"><span class="pre">xDesc</span></code>: Tensor descriptor for input data tensor x </li>
+<li><code class="docutils literal"><span class="pre">convDesc</span></code>: Convolution layer descriptor </li>
+<li><code class="docutils literal"><span class="pre">yDesc</span></code>: Tensor descriptor for output data tensor y </li>
+<li><code class="docutils literal"><span class="pre">workSpaceSize</span></code>: Pointer to memory to return size in bytes </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopenfindconvolutionforwardalgorithm">
+<h2>miopenFindConvolutionForwardAlgorithm<a class="headerlink" href="#miopenfindconvolutionforwardalgorithm" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv237miopenFindConvolutionForwardAlgorithm14miopenHandle_tK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPKvK29miopenConvolutionDescriptor_tK24miopenTensorDescriptor_tPvKiPiP20miopenConvAlgoPerf_tPv6size_tb">
+<span id="miopenFindConvolutionForwardAlgorithm__miopenHandle_t.miopenTensorDescriptor_tC.voidCP.miopenTensorDescriptor_tC.voidCP.miopenConvolutionDescriptor_tC.miopenTensorDescriptor_tC.voidP.iC.iP.miopenConvAlgoPerf_tP.voidP.s.b"></span><span class="target" id="group__convolutions_1ga6ce2584d8111f2d2d22d72d6589261a7"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenFindConvolutionForwardAlgorithm</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>xDesc</em>, <em class="property">const</em> void *<em>x</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>wDesc</em>, <em class="property">const</em> void *<em>w</em>, <em class="property">const</em> miopenConvolutionDescriptor_t <em>convDesc</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>yDesc</em>, void *<em>y</em>, <em class="property">const</em> int <em>requestAlgoCount</em>, int *<em>returnedAlgoCount</em>, <a class="reference internal" href="#_CPPv220miopenConvAlgoPerf_t" title="miopenConvAlgoPerf_t">miopenConvAlgoPerf_t</a> *<em>perfResults</em>, void *<em>workSpace</em>, size_t <em>workSpaceSize</em>, bool <em>exhaustiveSearch</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv237miopenFindConvolutionForwardAlgorithm14miopenHandle_tK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPKvK29miopenConvolutionDescriptor_tK24miopenTensorDescriptor_tPvKiPiP20miopenConvAlgoPerf_tPv6size_tb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Search and run the forward convolutional algorithms and return a list of kernel times. </p>
+<p>This function attempts all MIOpen algorithms for <a class="reference internal" href="#group__convolutions_1ga9920de268dbee3a383d017283bf06a51"><span class="std std-ref">miopenConvolutionForward()</span></a>, and outputs performance metrics to a user- allocated array of <a class="reference internal" href="#structmiopenConvAlgoPerf__t"><span class="std std-ref">miopenConvAlgoPerf_t</span></a>. These metrics are written in sorted fashion where the first element has the lowest compute time. This function is mandatory before using forward convolutions. Users can chose the top-most algorithm if they only care about the fastest algorithm.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">xDesc</span></code>: Tensor descriptor for data input tensor x </li>
+<li><code class="docutils literal"><span class="pre">x</span></code>: Data tensor x </li>
+<li><code class="docutils literal"><span class="pre">wDesc</span></code>: Tensor descriptor for weight tensor w </li>
+<li><code class="docutils literal"><span class="pre">w</span></code>: Weights tensor w </li>
+<li><code class="docutils literal"><span class="pre">convDesc</span></code>: Convolution layer descriptor </li>
+<li><code class="docutils literal"><span class="pre">yDesc</span></code>: Tensor descriptor for output data tensor y </li>
+<li><code class="docutils literal"><span class="pre">y</span></code>: Data tensor y </li>
+<li><code class="docutils literal"><span class="pre">requestAlgoCount</span></code>: Number of algorithms to return kernel times </li>
+<li><code class="docutils literal"><span class="pre">returnedAlgoCount</span></code>: Pointer to number of algorithms returned </li>
+<li><code class="docutils literal"><span class="pre">perfResults</span></code>: Pointer to union of best algorithm for forward and backwards </li>
+<li><code class="docutils literal"><span class="pre">workSpace</span></code>: Pointer to workspace required for the search </li>
+<li><code class="docutils literal"><span class="pre">workSpaceSize</span></code>: Size in bytes of the memory needed for find </li>
+<li><code class="docutils literal"><span class="pre">exhaustiveSearch</span></code>: A boolean to toggle a full search of all algorithms and configurations. </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopenconvolutionforward">
+<h2>miopenConvolutionForward<a class="headerlink" href="#miopenconvolutionforward" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv224miopenConvolutionForward14miopenHandle_tPKvK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPKvK29miopenConvolutionDescriptor_t24miopenConvFwdAlgorithm_tPKvK24miopenTensorDescriptor_tPvPv6size_t">
+<span id="miopenConvolutionForward__miopenHandle_t.voidCP.miopenTensorDescriptor_tC.voidCP.miopenTensorDescriptor_tC.voidCP.miopenConvolutionDescriptor_tC.miopenConvFwdAlgorithm_t.voidCP.miopenTensorDescriptor_tC.voidP.voidP.s"></span><span class="target" id="group__convolutions_1ga9920de268dbee3a383d017283bf06a51"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenConvolutionForward</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, <em class="property">const</em> void *<em>alpha</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>xDesc</em>, <em class="property">const</em> void *<em>x</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>wDesc</em>, <em class="property">const</em> void *<em>w</em>, <em class="property">const</em> miopenConvolutionDescriptor_t <em>convDesc</em>, <a class="reference internal" href="#_CPPv224miopenConvFwdAlgorithm_t" title="miopenConvFwdAlgorithm_t">miopenConvFwdAlgorithm_t</a> <em>algo</em>, <em class="property">const</em> void *<em>beta</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>yDesc</em>, void *<em>y</em>, void *<em>workSpace</em>, size_t <em>workSpaceSize</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv224miopenConvolutionForward14miopenHandle_tPKvK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPKvK29miopenConvolutionDescriptor_t24miopenConvFwdAlgorithm_tPKvK24miopenTensorDescriptor_tPvPv6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Execute a forward convolution layer. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">alpha</span></code>: Scaling factor, always equal to 1 </li>
+<li><code class="docutils literal"><span class="pre">xDesc</span></code>: Tensor descriptor for data input tensor x </li>
+<li><code class="docutils literal"><span class="pre">x</span></code>: Data tensor x </li>
+<li><code class="docutils literal"><span class="pre">wDesc</span></code>: Tensor descriptor for weight tensor w </li>
+<li><code class="docutils literal"><span class="pre">w</span></code>: Weights tensor w </li>
+<li><code class="docutils literal"><span class="pre">convDesc</span></code>: Convolution layer descriptor </li>
+<li><code class="docutils literal"><span class="pre">algo</span></code>: Algorithm selected </li>
+<li><code class="docutils literal"><span class="pre">beta</span></code>: Shift factor, always equal to 0 </li>
+<li><code class="docutils literal"><span class="pre">yDesc</span></code>: Tensor descriptor for output data tensor y </li>
+<li><code class="docutils literal"><span class="pre">y</span></code>: Data tensor y </li>
+<li><code class="docutils literal"><span class="pre">workSpace</span></code>: Pointer to workspace required for the search </li>
+<li><code class="docutils literal"><span class="pre">workSpaceSize</span></code>: Size in bytes of the memory needed for find </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopenconvolutionforwardbias">
+<h2>miopenConvolutionForwardBias<a class="headerlink" href="#miopenconvolutionforwardbias" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv228miopenConvolutionForwardBias14miopenHandle_tPKvK24miopenTensorDescriptor_tPKvPKvK24miopenTensorDescriptor_tPv">
+<span id="miopenConvolutionForwardBias__miopenHandle_t.voidCP.miopenTensorDescriptor_tC.voidCP.voidCP.miopenTensorDescriptor_tC.voidP"></span><span class="target" id="group__convolutions_1ga2b9f1b20325aadb5538b35384abd30f6"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenConvolutionForwardBias</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, <em class="property">const</em> void *<em>alpha</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>bDesc</em>, <em class="property">const</em> void *<em>b</em>, <em class="property">const</em> void *<em>beta</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>yDesc</em>, void *<em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv228miopenConvolutionForwardBias14miopenHandle_tPKvK24miopenTensorDescriptor_tPKvPKvK24miopenTensorDescriptor_tPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Calculate element-wise scale and shift of a tensor via a bias tensor. </p>
+<p>This function applies an element-wise bias to a data tensor from an input bias tensor. Currently for MIOpen v1.0 alpha and beta are 1 and 0 respectively.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">alpha</span></code>: Scaling factor, always equal to 1 </li>
+<li><code class="docutils literal"><span class="pre">bDesc</span></code>: Tensor descriptor for bias tensor b </li>
+<li><code class="docutils literal"><span class="pre">b</span></code>: Bias tensor b </li>
+<li><code class="docutils literal"><span class="pre">beta</span></code>: Shift factor, always equal to 0 </li>
+<li><code class="docutils literal"><span class="pre">yDesc</span></code>: Tensor descriptor for data tensor y </li>
+<li><code class="docutils literal"><span class="pre">y</span></code>: Data tensor y </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopenfindconvolutionbackwarddataalgorithm">
+<h2>miopenFindConvolutionBackwardDataAlgorithm<a class="headerlink" href="#miopenfindconvolutionbackwarddataalgorithm" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv242miopenFindConvolutionBackwardDataAlgorithm14miopenHandle_tK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPKvK29miopenConvolutionDescriptor_tK24miopenTensorDescriptor_tPKvKiPiP20miopenConvAlgoPerf_tPv6size_tb">
+<span id="miopenFindConvolutionBackwardDataAlgorithm__miopenHandle_t.miopenTensorDescriptor_tC.voidCP.miopenTensorDescriptor_tC.voidCP.miopenConvolutionDescriptor_tC.miopenTensorDescriptor_tC.voidCP.iC.iP.miopenConvAlgoPerf_tP.voidP.s.b"></span><span class="target" id="group__convolutions_1gac3cfda992eb4e8f10369c32985ce05ff"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenFindConvolutionBackwardDataAlgorithm</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>dyDesc</em>, <em class="property">const</em> void *<em>dy</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>wDesc</em>, <em class="property">const</em> void *<em>w</em>, <em class="property">const</em> miopenConvolutionDescriptor_t <em>convDesc</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>dxDesc</em>, <em class="property">const</em> void *<em>dx</em>, <em class="property">const</em> int <em>requestAlgoCount</em>, int *<em>returnedAlgoCount</em>, <a class="reference internal" href="#_CPPv220miopenConvAlgoPerf_t" title="miopenConvAlgoPerf_t">miopenConvAlgoPerf_t</a> *<em>perfResults</em>, void *<em>workSpace</em>, size_t <em>workSpaceSize</em>, bool <em>exhaustiveSearch</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv242miopenFindConvolutionBackwardDataAlgorithm14miopenHandle_tK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPKvK29miopenConvolutionDescriptor_tK24miopenTensorDescriptor_tPKvKiPiP20miopenConvAlgoPerf_tPv6size_tb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Search and run the backwards data convolutional algorithms and return a list of kernel times. </p>
+<p>This function attempts all MIOpen algorithms for miopenConvolutionBackwardsData(), and outputs performance metrics to a user-allocated array of <a class="reference internal" href="#structmiopenConvAlgoPerf__t"><span class="std std-ref">miopenConvAlgoPerf_t</span></a>. These metrics are written in sorted fashion where the first element has the lowest compute time. This function is mandatory before using backwards convolutions. Users can chose the top-most algorithm if they only care about the fastest algorithm.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">dyDesc</span></code>: Tensor descriptor for data input tensor dy </li>
+<li><code class="docutils literal"><span class="pre">dy</span></code>: Data delta tensor dy </li>
+<li><code class="docutils literal"><span class="pre">wDesc</span></code>: Tensor descriptor for weight tensor w </li>
+<li><code class="docutils literal"><span class="pre">w</span></code>: Weights tensor w </li>
+<li><code class="docutils literal"><span class="pre">convDesc</span></code>: Convolution layer descriptor </li>
+<li><code class="docutils literal"><span class="pre">dxDesc</span></code>: Tensor descriptor for output data tensor dx </li>
+<li><code class="docutils literal"><span class="pre">dx</span></code>: Data delta tensor dx </li>
+<li><code class="docutils literal"><span class="pre">requestAlgoCount</span></code>: Number of algorithms to return kernel times </li>
+<li><code class="docutils literal"><span class="pre">returnedAlgoCount</span></code>: Pointer to number of algorithms returned </li>
+<li><code class="docutils literal"><span class="pre">perfResults</span></code>: Pointer to union of best algorithm for forward and backwards </li>
+<li><code class="docutils literal"><span class="pre">workSpace</span></code>: Pointer to workspace required for the search </li>
+<li><code class="docutils literal"><span class="pre">workSpaceSize</span></code>: Size in bytes of the memory needed for find </li>
+<li><code class="docutils literal"><span class="pre">exhaustiveSearch</span></code>: A boolean to toggle a full search of all algorithms and configurations. </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopenconvolutionbackwarddata">
+<h2>miopenConvolutionBackwardData<a class="headerlink" href="#miopenconvolutionbackwarddata" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv229miopenConvolutionBackwardData14miopenHandle_tPKvK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPKvK29miopenConvolutionDescriptor_t28miopenConvBwdDataAlgorithm_tPKvK24miopenTensorDescriptor_tPvPv6size_t">
+<span id="miopenConvolutionBackwardData__miopenHandle_t.voidCP.miopenTensorDescriptor_tC.voidCP.miopenTensorDescriptor_tC.voidCP.miopenConvolutionDescriptor_tC.miopenConvBwdDataAlgorithm_t.voidCP.miopenTensorDescriptor_tC.voidP.voidP.s"></span><span class="target" id="group__convolutions_1gab35ac8cb87c64d1ab7feaa983e6e3c6d"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenConvolutionBackwardData</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, <em class="property">const</em> void *<em>alpha</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>dyDesc</em>, <em class="property">const</em> void *<em>dy</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>wDesc</em>, <em class="property">const</em> void *<em>w</em>, <em class="property">const</em> miopenConvolutionDescriptor_t <em>convDesc</em>, <a class="reference internal" href="#_CPPv228miopenConvBwdDataAlgorithm_t" title="miopenConvBwdDataAlgorithm_t">miopenConvBwdDataAlgorithm_t</a> <em>algo</em>, <em class="property">const</em> void *<em>beta</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>dxDesc</em>, void *<em>dx</em>, void *<em>workSpace</em>, size_t <em>workSpaceSize</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv229miopenConvolutionBackwardData14miopenHandle_tPKvK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPKvK29miopenConvolutionDescriptor_t28miopenConvBwdDataAlgorithm_tPKvK24miopenTensorDescriptor_tPvPv6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Execute a backward data convolution layer. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">alpha</span></code>: Scaling factor, always equal to 1 </li>
+<li><code class="docutils literal"><span class="pre">dyDesc</span></code>: Tensor descriptor for data input tensor dy </li>
+<li><code class="docutils literal"><span class="pre">dy</span></code>: Data delta tensor dy </li>
+<li><code class="docutils literal"><span class="pre">wDesc</span></code>: Tensor descriptor for weight tensor w </li>
+<li><code class="docutils literal"><span class="pre">w</span></code>: Weights tensor w </li>
+<li><code class="docutils literal"><span class="pre">convDesc</span></code>: Convolution layer descriptor </li>
+<li><code class="docutils literal"><span class="pre">algo</span></code>: Algorithm selected </li>
+<li><code class="docutils literal"><span class="pre">beta</span></code>: Shift factor, always equal to 0 </li>
+<li><code class="docutils literal"><span class="pre">dxDesc</span></code>: Tensor descriptor for output data tensor dx </li>
+<li><code class="docutils literal"><span class="pre">dx</span></code>: Data delta tensor dx </li>
+<li><code class="docutils literal"><span class="pre">workSpace</span></code>: Pointer to workspace required for the search </li>
+<li><code class="docutils literal"><span class="pre">workSpaceSize</span></code>: Size in bytes of the memory needed for find </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopenconvolutionbackwarddatagetworkspacesize">
+<h2>miopenConvolutionBackwardDataGetWorkSpaceSize<a class="headerlink" href="#miopenconvolutionbackwarddatagetworkspacesize" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv245miopenConvolutionBackwardDataGetWorkSpaceSize14miopenHandle_tK24miopenTensorDescriptor_tK24miopenTensorDescriptor_tK29miopenConvolutionDescriptor_tK24miopenTensorDescriptor_tP6size_t">
+<span id="miopenConvolutionBackwardDataGetWorkSpaceSize__miopenHandle_t.miopenTensorDescriptor_tC.miopenTensorDescriptor_tC.miopenConvolutionDescriptor_tC.miopenTensorDescriptor_tC.sP"></span><span class="target" id="group__convolutions_1ga721816db33ff631a249c730c4fc10044"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenConvolutionBackwardDataGetWorkSpaceSize</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>dyDesc</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>wDesc</em>, <em class="property">const</em> miopenConvolutionDescriptor_t <em>convDesc</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>dxDesc</em>, size_t *<em>workSpaceSize</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv245miopenConvolutionBackwardDataGetWorkSpaceSize14miopenHandle_tK24miopenTensorDescriptor_tK24miopenTensorDescriptor_tK29miopenConvolutionDescriptor_tK24miopenTensorDescriptor_tP6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the GPU memory required for the backward data convolution algorithm. </p>
+<p>For a provided tensor descriptors and algorithm selection, this function calculates and returns the workspace size required for back propagation on data.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">dyDesc</span></code>: Tensor descriptor for data input tensor dy </li>
+<li><code class="docutils literal"><span class="pre">wDesc</span></code>: Tensor descriptor for weight tensor w </li>
+<li><code class="docutils literal"><span class="pre">convDesc</span></code>: Convolution layer descriptor </li>
+<li><code class="docutils literal"><span class="pre">dxDesc</span></code>: Tensor descriptor for output data tensor dx </li>
+<li><code class="docutils literal"><span class="pre">workSpaceSize</span></code>: Size in bytes of the memory required </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopenconvolutionbackwardweightsgetworkspacesize">
+<h2>miopenConvolutionBackwardWeightsGetWorkSpaceSize<a class="headerlink" href="#miopenconvolutionbackwardweightsgetworkspacesize" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv248miopenConvolutionBackwardWeightsGetWorkSpaceSize14miopenHandle_tK24miopenTensorDescriptor_tK24miopenTensorDescriptor_tK29miopenConvolutionDescriptor_tK24miopenTensorDescriptor_tP6size_t">
+<span id="miopenConvolutionBackwardWeightsGetWorkSpaceSize__miopenHandle_t.miopenTensorDescriptor_tC.miopenTensorDescriptor_tC.miopenConvolutionDescriptor_tC.miopenTensorDescriptor_tC.sP"></span><span class="target" id="group__convolutions_1ga64fad4ae595042f171ad003f6fdcc539"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenConvolutionBackwardWeightsGetWorkSpaceSize</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>dyDesc</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>xDesc</em>, <em class="property">const</em> miopenConvolutionDescriptor_t <em>convDesc</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>dwDesc</em>, size_t *<em>workSpaceSize</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv248miopenConvolutionBackwardWeightsGetWorkSpaceSize14miopenHandle_tK24miopenTensorDescriptor_tK24miopenTensorDescriptor_tK29miopenConvolutionDescriptor_tK24miopenTensorDescriptor_tP6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the GPU memory required for the backward weights convolution algorithm. </p>
+<p>For a provided tensor descriptors and algorithm selection, this function calculates and returns the workspace size required for back propagation on weights.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">dyDesc</span></code>: Tensor descriptor for data input tensor dy </li>
+<li><code class="docutils literal"><span class="pre">xDesc</span></code>: Tensor descriptor for data tensor x </li>
+<li><code class="docutils literal"><span class="pre">convDesc</span></code>: Convolution layer descriptor </li>
+<li><code class="docutils literal"><span class="pre">dwDesc</span></code>: Tensor descriptor for output weights tensor dw </li>
+<li><code class="docutils literal"><span class="pre">workSpaceSize</span></code>: Size in bytes of the memory required </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopenfindconvolutionbackwardweightsalgorithm">
+<h2>miopenFindConvolutionBackwardWeightsAlgorithm<a class="headerlink" href="#miopenfindconvolutionbackwardweightsalgorithm" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv245miopenFindConvolutionBackwardWeightsAlgorithm14miopenHandle_tK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPKvK29miopenConvolutionDescriptor_tK24miopenTensorDescriptor_tPvKiPiP20miopenConvAlgoPerf_tPv6size_tb">
+<span id="miopenFindConvolutionBackwardWeightsAlgorithm__miopenHandle_t.miopenTensorDescriptor_tC.voidCP.miopenTensorDescriptor_tC.voidCP.miopenConvolutionDescriptor_tC.miopenTensorDescriptor_tC.voidP.iC.iP.miopenConvAlgoPerf_tP.voidP.s.b"></span><span class="target" id="group__convolutions_1ga022c767dce5026daf4c87afaa6466185"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenFindConvolutionBackwardWeightsAlgorithm</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>dyDesc</em>, <em class="property">const</em> void *<em>dy</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>xDesc</em>, <em class="property">const</em> void *<em>x</em>, <em class="property">const</em> miopenConvolutionDescriptor_t <em>convDesc</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>dwDesc</em>, void *<em>dw</em>, <em class="property">const</em> int <em>requestAlgoCount</em>, int *<em>returnedAlgoCount</em>, <a class="reference internal" href="#_CPPv220miopenConvAlgoPerf_t" title="miopenConvAlgoPerf_t">miopenConvAlgoPerf_t</a> *<em>perfResults</em>, void *<em>workSpace</em>, size_t <em>workSpaceSize</em>, bool <em>exhaustiveSearch</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv245miopenFindConvolutionBackwardWeightsAlgorithm14miopenHandle_tK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPKvK29miopenConvolutionDescriptor_tK24miopenTensorDescriptor_tPvKiPiP20miopenConvAlgoPerf_tPv6size_tb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Search and run the backwards weights convolutional algorithms and return a list of kernel times. </p>
+<p>This function attempts all MIOpen algorithms for miopenConvolutionBackwardsWeights(), and outputs performance metrics to a user- allocated array of <a class="reference internal" href="#structmiopenConvAlgoPerf__t"><span class="std std-ref">miopenConvAlgoPerf_t</span></a>. These metrics are written in sorted fashion where the first element has the lowest compute time. This function is mandatory before using backwards weight convolutions. Users can chose the top-most algorithm if they only care about the fastest algorithm.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">dyDesc</span></code>: Tensor descriptor for data input tensor dy </li>
+<li><code class="docutils literal"><span class="pre">dy</span></code>: Data delta tensor dy </li>
+<li><code class="docutils literal"><span class="pre">xDesc</span></code>: Tensor descriptor for output data tensor x </li>
+<li><code class="docutils literal"><span class="pre">x</span></code>: Data delta tensor dx </li>
+<li><code class="docutils literal"><span class="pre">convDesc</span></code>: Convolution layer descriptor </li>
+<li><code class="docutils literal"><span class="pre">dwDesc</span></code>: Tensor descriptor for weight tensor dw </li>
+<li><code class="docutils literal"><span class="pre">dw</span></code>: Weights delta tensor dw </li>
+<li><code class="docutils literal"><span class="pre">requestAlgoCount</span></code>: Number of algorithms to return kernel times </li>
+<li><code class="docutils literal"><span class="pre">returnedAlgoCount</span></code>: Pointer to number of algorithms returned </li>
+<li><code class="docutils literal"><span class="pre">perfResults</span></code>: Pointer to union of best algorithm for forward and backwards </li>
+<li><code class="docutils literal"><span class="pre">workSpace</span></code>: Pointer to workspace required for the search </li>
+<li><code class="docutils literal"><span class="pre">workSpaceSize</span></code>: Size in bytes of the memory needed for find </li>
+<li><code class="docutils literal"><span class="pre">exhaustiveSearch</span></code>: A boolean to toggle a full search of all algorithms and configurations. </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopenconvolutionbackwardweights">
+<h2>miopenConvolutionBackwardWeights<a class="headerlink" href="#miopenconvolutionbackwardweights" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv232miopenConvolutionBackwardWeights14miopenHandle_tPKvK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPKvK29miopenConvolutionDescriptor_t31miopenConvBwdWeightsAlgorithm_tPKvK24miopenTensorDescriptor_tPvPv6size_t">
+<span id="miopenConvolutionBackwardWeights__miopenHandle_t.voidCP.miopenTensorDescriptor_tC.voidCP.miopenTensorDescriptor_tC.voidCP.miopenConvolutionDescriptor_tC.miopenConvBwdWeightsAlgorithm_t.voidCP.miopenTensorDescriptor_tC.voidP.voidP.s"></span><span class="target" id="group__convolutions_1gaa0933e4a12bd7d2e25bdee4884e2d5f0"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenConvolutionBackwardWeights</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, <em class="property">const</em> void *<em>alpha</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>dyDesc</em>, <em class="property">const</em> void *<em>dy</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>xDesc</em>, <em class="property">const</em> void *<em>x</em>, <em class="property">const</em> miopenConvolutionDescriptor_t <em>convDesc</em>, <a class="reference internal" href="#_CPPv231miopenConvBwdWeightsAlgorithm_t" title="miopenConvBwdWeightsAlgorithm_t">miopenConvBwdWeightsAlgorithm_t</a> <em>algo</em>, <em class="property">const</em> void *<em>beta</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>dwDesc</em>, void *<em>dw</em>, void *<em>workSpace</em>, size_t <em>workSpaceSize</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv232miopenConvolutionBackwardWeights14miopenHandle_tPKvK24miopenTensorDescriptor_tPKvK24miopenTensorDescriptor_tPKvK29miopenConvolutionDescriptor_t31miopenConvBwdWeightsAlgorithm_tPKvK24miopenTensorDescriptor_tPvPv6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Execute a backward weights convolution layer. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">alpha</span></code>: Scaling factor, always equal to 1 </li>
+<li><code class="docutils literal"><span class="pre">dyDesc</span></code>: Tensor descriptor for data tensor dy </li>
+<li><code class="docutils literal"><span class="pre">dy</span></code>: Data delta tensor dy </li>
+<li><code class="docutils literal"><span class="pre">xDesc</span></code>: Tensor descriptor for data tensor x </li>
+<li><code class="docutils literal"><span class="pre">x</span></code>: Data tensor x </li>
+<li><code class="docutils literal"><span class="pre">convDesc</span></code>: Convolution layer descriptor </li>
+<li><code class="docutils literal"><span class="pre">algo</span></code>: Algorithm selected </li>
+<li><code class="docutils literal"><span class="pre">beta</span></code>: Shift factor, always equal to 0 </li>
+<li><code class="docutils literal"><span class="pre">dwDesc</span></code>: Tensor descriptor for weight tensor dw </li>
+<li><code class="docutils literal"><span class="pre">dw</span></code>: Weights delta tensor dw </li>
+<li><code class="docutils literal"><span class="pre">workSpace</span></code>: Pointer to workspace required for the search </li>
+<li><code class="docutils literal"><span class="pre">workSpaceSize</span></code>: Size in bytes of the memory needed for find </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopenconvolutionbackwardbias">
+<h2>miopenConvolutionBackwardBias<a class="headerlink" href="#miopenconvolutionbackwardbias" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv229miopenConvolutionBackwardBias14miopenHandle_tPKvK24miopenTensorDescriptor_tPKvPKvK24miopenTensorDescriptor_tPv">
+<span id="miopenConvolutionBackwardBias__miopenHandle_t.voidCP.miopenTensorDescriptor_tC.voidCP.voidCP.miopenTensorDescriptor_tC.voidP"></span><span class="target" id="group__convolutions_1gae2117425a29137139581303b08c60226"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenConvolutionBackwardBias</code><span class="sig-paren">(</span>miopenHandle_t <em>handle</em>, <em class="property">const</em> void *<em>alpha</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>dyDesc</em>, <em class="property">const</em> void *<em>dy</em>, <em class="property">const</em> void *<em>beta</em>, <em class="property">const</em> miopenTensorDescriptor_t <em>dbDesc</em>, void *<em>db</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv229miopenConvolutionBackwardBias14miopenHandle_tPKvK24miopenTensorDescriptor_tPKvPKvK24miopenTensorDescriptor_tPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Calculates the gradient with respect to the bias. </p>
+<p>Compute the convolution backwards gradient with respect to the bias tensor. Currently for MIOpen v1.0 alpha and beta are 1 and 0 respectively.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">handle</span></code>: MIOpen handle </li>
+<li><code class="docutils literal"><span class="pre">alpha</span></code>: Scaling factor, always equal to 1 </li>
+<li><code class="docutils literal"><span class="pre">dyDesc</span></code>: Tensor descriptor for data input tensor dy </li>
+<li><code class="docutils literal"><span class="pre">dy</span></code>: Data delta tensor dy </li>
+<li><code class="docutils literal"><span class="pre">beta</span></code>: Shift factor, always equal to 0 </li>
+<li><code class="docutils literal"><span class="pre">dbDesc</span></code>: Tensor descriptor for input bias tensor db </li>
+<li><code class="docutils literal"><span class="pre">db</span></code>: Bias delta tensor db </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miopendestroyconvolutiondescriptor">
+<h2>miopenDestroyConvolutionDescriptor<a class="headerlink" href="#miopendestroyconvolutiondescriptor" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv234miopenDestroyConvolutionDescriptor29miopenConvolutionDescriptor_t">
+<span id="miopenDestroyConvolutionDescriptor__miopenConvolutionDescriptor_t"></span><span class="target" id="group__convolutions_1ga6c2a2573136bbf002da8a7ac2c39ec9e"></span> <a class="reference internal" href="handle.html#_CPPv214miopenStatus_t" title="miopenStatus_t">miopenStatus_t</a> <code class="descclassname"></code><code class="descname">miopenDestroyConvolutionDescriptor</code><span class="sig-paren">(</span>miopenConvolutionDescriptor_t <em>convDesc</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv234miopenDestroyConvolutionDescriptor29miopenConvolutionDescriptor_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Destroys the tensor descriptor object. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>miopenStatus_t </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">convDesc</span></code>: Convolution tensor descriptor type </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pooling.html" class="btn btn-neutral float-right" title="Pooling Layer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="activation.html" class="btn btn-neutral" title="Activation Layers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Advanced Micro Devices, Inc.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
