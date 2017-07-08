@@ -247,25 +247,25 @@ endif()
 
 ############################################################
 # Installation
-rocm_install_targets(
-  TARGETS MIOpen
-  INCLUDE 
-    ${PROJECT_SOURCE_DIR}/include
-    ${PROJECT_BINARY_DIR}/include
-  PREFIX ${MIOPEN_INSTALL_DIR}
- )
+#rocm_install_targets(
+#  TARGETS MIOpen
+#  INCLUDE 
+#    ${PROJECT_SOURCE_DIR}/include
+#    ${PROJECT_BINARY_DIR}/include
+#  PREFIX ${MIOPEN_INSTALL_DIR}
+# )
 
-rocm_export_targets(
-  TARGETS MIOpen
-  PREFIX ${MIOPEN_INSTALL_DIR}
-  DEPENDS ${PACKAGE_DEPENDS}
- )
+#rocm_export_targets(
+#  TARGETS MIOpen
+#  PREFIX ${MIOPEN_INSTALL_DIR}
+#  DEPENDS ${PACKAGE_DEPENDS}
+# )
 
 
 # Install db files
-install(FILES 
-    kernels/gfx803_64.cd.pdb.txt
-    kernels/gfx900_64.cd.pdb.txt
- DESTINATION ${DATA_INSTALL_DIR}/db)
+#install(FILES 
+#    kernels/gfx803_64.cd.pdb.txt
+#    kernels/gfx900_64.cd.pdb.txt
+# DESTINATION ${DATA_INSTALL_DIR}/db)
 
-rocm_install_symlink_subdir(${MIOPEN_INSTALL_DIR})
+#rocm_install_symlink_subdir(${MIOPEN_INSTALL_DIR})

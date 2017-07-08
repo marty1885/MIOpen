@@ -31,24 +31,26 @@ if( NOT MSVC_IDE AND NOT CMAKE_BUILD_TYPE )
     set( CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." )
 endif()
 
+include_directories(src/include include)
+
 # Default installation path
-if(WIN32)
-    set(CMAKE_INSTALL_PREFIX "/opt/rocm/x86_64-w64-mingw32" CACHE PATH "")
-else()
-    set(CMAKE_INSTALL_PREFIX "/opt/rocm" CACHE PATH "")
-endif()
+#if(WIN32)
+#    set(CMAKE_INSTALL_PREFIX "/opt/rocm/x86_64-w64-mingw32" CACHE PATH "")
+#else()
+#    set(CMAKE_INSTALL_PREFIX "/opt/rocm" CACHE PATH "")
+#endif()
 
 project ( MIOpen C CXX )
 
-find_package(ROCM REQUIRED PATHS /opt/rocm)
+#find_package(ROCM REQUIRED PATHS /opt/rocm)
 
-include(ROCMInstallTargets)
-include(ROCMPackageConfigHelpers)
-include(ROCMSetupVersion)
-include(ROCMInstallSymlinks)
-include(ROCMCreatePackage)
+#include(ROCMInstallTargets)
+#include(ROCMPackageConfigHelpers)
+#include(ROCMSetupVersion)
+#include(ROCMInstallSymlinks)
+#include(ROCMCreatePackage)
 
-rocm_setup_version(VERSION 1.0.0)
+#rocm_setup_version(VERSION 1.0.0)
 
 list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake )
 
@@ -96,7 +98,8 @@ if( MIOPEN_BACKEND STREQUAL "OpenCL")
 endif()
 
 # HIP
-if( MIOPEN_BACKEND STREQUAL "HIP" OR MIOPEN_BACKEND STREQUAL "HIPOC")
+if(1 EQUAL 0)
+#if( MIOPEN_BACKEND STREQUAL "HIP" OR MIOPEN_BACKEND STREQUAL "HIPOC")
     set(MIOPEN_BACKEND_HIP 1)
     find_program(HIP_OC_COMPILER clang-ocl
         PATH_SUFFIXES bin
@@ -115,12 +118,12 @@ endif()
 message( STATUS "${MIOPEN_BACKEND} backend selected." )
 
 # Online assembler
-find_program(MIOPEN_AMDGCN_ASSEMBLER
-    NAMES clang
-    PATHS ${MIOPEN_AMDGCN_ASSEMBLER_PATH} /opt/rocm
-    PATH_SUFFIXES /opencl/bin/x86_64
-    NO_DEFAULT_PATH
-)
+#find_program(MIOPEN_AMDGCN_ASSEMBLER
+#    NAMES clang
+#    PATHS ${MIOPEN_AMDGCN_ASSEMBLER_PATH} /opt/rocm
+#    PATH_SUFFIXES /opencl/bin/x86_64
+#    NO_DEFAULT_PATH
+#)
 message(STATUS "AMDGCN assembler: ${MIOPEN_AMDGCN_ASSEMBLER}")
 
 # miopengemm
@@ -147,15 +150,15 @@ else()
     set(MIOPEN_DB_PATH "${CMAKE_INSTALL_PREFIX}/${DATA_INSTALL_DIR}/db" CACHE PATH "Default path to search for db")
 endif()
 
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "rocm-opencl-dev, rocm-utils, hip_hcc")
-set(CPACK_RPM_PACKAGE_REQUIRES "rocm-opencl-dev, rocm-utils, hip_hcc")
-rocm_create_package(
-    NAME MIOpen-${MIOPEN_BACKEND}
-    DESCRIPTION "AMD's DNN Library"
-    MAINTAINER "Paul Fultz II <paul.fultz@amd.com>"
-    LDCONFIG
+#set(CPACK_DEBIAN_PACKAGE_DEPENDS "rocm-opencl-dev, rocm-utils, hip_hcc")
+#set(CPACK_RPM_PACKAGE_REQUIRES "rocm-opencl-dev, rocm-utils, hip_hcc")
+#rocm_create_package(
+#    NAME MIOpen-${MIOPEN_BACKEND}
+#    DESCRIPTION "AMD's DNN Library"
+#    MAINTAINER "Paul Fultz II <paul.fultz@amd.com>"
+#    LDCONFIG
     # DEPENDS rocm-opencl rocm-utils hip_hcc tinygemm
-)
+#)
 
 include(EnableCompilerWarnings)
 if(CMAKE_CXX_COMPILER MATCHES ".*hcc")
