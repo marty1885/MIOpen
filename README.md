@@ -1,3 +1,5 @@
+This fork of the MIOpen library can run on Nvidia/Intel's OpenCL SDK and pass all of it's unit tests.
+
 # MIOpen
 
 AMD's library for high peformance machine learning primitives. MIOpen supports two programming models - 
