@@ -269,13 +269,17 @@ struct HandleImpl
                     MIOPEN_THROW("clGetPlatformInfo failed.");
                 }
 
-                platform = platforms[i];
+                /*platform = platforms[i];
                 if(!strcmp(pbuf, "Advanced Micro Devices, Inc."))
                 {
                     break;
-                }
+                }*/
+                //Select a default platform
+        		platform = platforms[0];
+        		break;
             }
         }
+
 
         /////////////////////////////////////////////////////////////////
         // Create an OpenCL context
@@ -285,7 +289,7 @@ struct HandleImpl
             CL_CONTEXT_PLATFORM, reinterpret_cast<cl_context_properties>(platform), 0};
         cl_context_properties* cprops = (nullptr == platform) ? nullptr : cps;
         ContextPtr result{
-            clCreateContextFromType(cprops, CL_DEVICE_TYPE_GPU, nullptr, nullptr, &status)};
+            clCreateContextFromType(cprops, CL_DEVICE_TYPE_ALL, nullptr, nullptr, &status)};
         if(status != CL_SUCCESS)
         {
             MIOPEN_THROW_CL_STATUS(status, "Error: Creating Handle. (clCreateContextFromType)");
@@ -335,9 +339,9 @@ Handle::Handle() : impl(new HandleImpl())
 
     impl->context = impl->create_context();
     /* First, get the size of device list data */
-    size_t deviceListSize;
+    cl_uint deviceListSize;
     if(clGetContextInfo(
-           impl->context.get(), CL_CONTEXT_NUM_DEVICES, sizeof(size_t), &deviceListSize, nullptr) !=
+           impl->context.get(), CL_CONTEXT_NUM_DEVICES, sizeof(cl_uint), &deviceListSize, nullptr) !=
        CL_SUCCESS)
     {
         MIOPEN_THROW("Error: Getting Handle Info (device list size, clGetContextInfo)");
