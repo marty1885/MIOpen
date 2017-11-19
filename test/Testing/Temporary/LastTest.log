@@ -1,0 +1,18 @@
+Start testing: Nov 19 10:50 CST
+----------------------------------------------------------
+1/1 Testing: test_main
+1/1 Test: test_main
+Command: "/home/marty/Documents/MIOpen/bin/test_main"
+Directory: /home/marty/Documents/MIOpen/test
+"test_main" start time: Nov 19 10:50 CST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.56 sec
+----------------------------------------------------------
+Test Passed.
+"test_main" end time: Nov 19 10:50 CST
+"test_main" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Nov 19 10:50 CST

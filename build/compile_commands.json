@@ -1,0 +1,327 @@
+[
+{
+  "directory": "/home/marty/Documents/MIOpen/build/addkernels",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include  -O3 -DNDEBUG   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/addkernels.dir/include_inliner.cpp.o -c /home/marty/Documents/MIOpen/addkernels/include_inliner.cpp",
+  "file": "/home/marty/Documents/MIOpen/addkernels/include_inliner.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/addkernels",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include  -O3 -DNDEBUG   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/addkernels.dir/addkernels.cpp.o -c /home/marty/Documents/MIOpen/addkernels/addkernels.cpp",
+  "file": "/home/marty/Documents/MIOpen/addkernels/addkernels.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/check_numerics.cpp.o -c /home/marty/Documents/MIOpen/src/check_numerics.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/check_numerics.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/convolution.cpp.o -c /home/marty/Documents/MIOpen/src/convolution.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/convolution.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/convolution_api.cpp.o -c /home/marty/Documents/MIOpen/src/convolution_api.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/convolution_api.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/convolution_fft.cpp.o -c /home/marty/Documents/MIOpen/src/convolution_fft.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/convolution_fft.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/load_file.cpp.o -c /home/marty/Documents/MIOpen/src/load_file.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/load_file.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/pooling_api.cpp.o -c /home/marty/Documents/MIOpen/src/pooling_api.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/pooling_api.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/kernel_warnings.cpp.o -c /home/marty/Documents/MIOpen/src/kernel_warnings.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/kernel_warnings.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/logger.cpp.o -c /home/marty/Documents/MIOpen/src/logger.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/logger.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/lrn_api.cpp.o -c /home/marty/Documents/MIOpen/src/lrn_api.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/lrn_api.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/activ_api.cpp.o -c /home/marty/Documents/MIOpen/src/activ_api.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/activ_api.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/handle_api.cpp.o -c /home/marty/Documents/MIOpen/src/handle_api.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/handle_api.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/softmax_api.cpp.o -c /home/marty/Documents/MIOpen/src/softmax_api.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/softmax_api.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/batch_norm.cpp.o -c /home/marty/Documents/MIOpen/src/batch_norm.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/batch_norm.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/batch_norm_api.cpp.o -c /home/marty/Documents/MIOpen/src/batch_norm_api.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/batch_norm_api.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/tensor.cpp.o -c /home/marty/Documents/MIOpen/src/tensor.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/tensor.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/tensor_api.cpp.o -c /home/marty/Documents/MIOpen/src/tensor_api.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/tensor_api.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/solver/conv_asm_3x3u.cpp.o -c /home/marty/Documents/MIOpen/src/solver/conv_asm_3x3u.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/solver/conv_asm_3x3u.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/solver/conv_asm_5x10u2v2f1.cpp.o -c /home/marty/Documents/MIOpen/src/solver/conv_asm_5x10u2v2f1.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/solver/conv_asm_5x10u2v2f1.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/solver/conv_asm_5x10u2v2b1.cpp.o -c /home/marty/Documents/MIOpen/src/solver/conv_asm_5x10u2v2b1.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/solver/conv_asm_5x10u2v2b1.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/solver/conv_asm_7x7c3h224w224k64u2v2p3q3f1.cpp.o -c /home/marty/Documents/MIOpen/src/solver/conv_asm_7x7c3h224w224k64u2v2p3q3f1.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/solver/conv_asm_7x7c3h224w224k64u2v2p3q3f1.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/solver/conv_asm_dir_BwdWrW3x3.cpp.o -c /home/marty/Documents/MIOpen/src/solver/conv_asm_dir_BwdWrW3x3.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/solver/conv_asm_dir_BwdWrW3x3.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/solver/conv_bin_wino3x3U.cpp.o -c /home/marty/Documents/MIOpen/src/solver/conv_bin_wino3x3U.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/solver/conv_bin_wino3x3U.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/solver/conv_bin_winoRxSFwd.cpp.o -c /home/marty/Documents/MIOpen/src/solver/conv_bin_winoRxSFwd.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/solver/conv_bin_winoRxSFwd.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/solver/conv_ocl_dir2D_bwdWrW_2.cpp.o -c /home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2D_bwdWrW_2.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2D_bwdWrW_2.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/solver/conv_ocl_dir2D_bwdWrW_53.cpp.o -c /home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2D_bwdWrW_53.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2D_bwdWrW_53.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/solver/conv_ocl_dir2D_bwdWrW_1x1.cpp.o -c /home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2D_bwdWrW_1x1.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2D_bwdWrW_1x1.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/solver/conv_ocl_dir2Dfwdgen.cpp.o -c /home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2Dfwdgen.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2Dfwdgen.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/solver/conv_ocl_dir2D11x11.cpp.o -c /home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2D11x11.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2D11x11.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/solver/conv_ocl_dir2D3x3.cpp.o -c /home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2D3x3.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2D3x3.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/solver/conv_ocl_dir2Dfwd_exhaustive_search.cpp.o -c /home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2Dfwd_exhaustive_search.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2Dfwd_exhaustive_search.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/solver/conv_ocl_dir2Dfwd.cpp.o -c /home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2Dfwd.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2Dfwd.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/solver/conv_ocl_dir2DfwdC.cpp.o -c /home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2DfwdC.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2DfwdC.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/solver/conv_ocl_dir2Dfwd1x1.cpp.o -c /home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2Dfwd1x1.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/solver/conv_ocl_dir2Dfwd1x1.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/tmp_dir.cpp.o -c /home/marty/Documents/MIOpen/src/tmp_dir.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/tmp_dir.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/binary_cache.cpp.o -c /home/marty/Documents/MIOpen/src/binary_cache.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/binary_cache.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/md5.cpp.o -c /home/marty/Documents/MIOpen/src/md5.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/md5.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/activ.cpp.o -c /home/marty/Documents/MIOpen/src/activ.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/activ.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/kernel_cache.cpp.o -c /home/marty/Documents/MIOpen/src/kernel_cache.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/kernel_cache.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/lrn.cpp.o -c /home/marty/Documents/MIOpen/src/lrn.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/lrn.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/mlo_dir_conv.cpp.o -c /home/marty/Documents/MIOpen/src/mlo_dir_conv.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/mlo_dir_conv.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/ocl/activ_ocl.cpp.o -c /home/marty/Documents/MIOpen/src/ocl/activ_ocl.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/ocl/activ_ocl.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/ocl/batchnormocl.cpp.o -c /home/marty/Documents/MIOpen/src/ocl/batchnormocl.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/ocl/batchnormocl.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/ocl/convolutionocl.cpp.o -c /home/marty/Documents/MIOpen/src/ocl/convolutionocl.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/ocl/convolutionocl.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/ocl/convolutionocl_fft.cpp.o -c /home/marty/Documents/MIOpen/src/ocl/convolutionocl_fft.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/ocl/convolutionocl_fft.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/ocl/lrn_ocl.cpp.o -c /home/marty/Documents/MIOpen/src/ocl/lrn_ocl.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/ocl/lrn_ocl.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/ocl/mloNeuron.cpp.o -c /home/marty/Documents/MIOpen/src/ocl/mloNeuron.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/ocl/mloNeuron.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/ocl/mloNorm.cpp.o -c /home/marty/Documents/MIOpen/src/ocl/mloNorm.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/ocl/mloNorm.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/ocl/mloPooling.cpp.o -c /home/marty/Documents/MIOpen/src/ocl/mloPooling.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/ocl/mloPooling.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/ocl/pooling_ocl.cpp.o -c /home/marty/Documents/MIOpen/src/ocl/pooling_ocl.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/ocl/pooling_ocl.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/ocl/tensorocl.cpp.o -c /home/marty/Documents/MIOpen/src/ocl/tensorocl.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/ocl/tensorocl.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/ocl/softmaxocl.cpp.o -c /home/marty/Documents/MIOpen/src/ocl/softmaxocl.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/ocl/softmaxocl.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/ocl/utilocl.cpp.o -c /home/marty/Documents/MIOpen/src/ocl/utilocl.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/ocl/utilocl.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/ocl/gcn_asm_utils.cpp.o -c /home/marty/Documents/MIOpen/src/ocl/gcn_asm_utils.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/ocl/gcn_asm_utils.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/pooling.cpp.o -c /home/marty/Documents/MIOpen/src/pooling.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/pooling.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/__/db.cpp.o -c /home/marty/Documents/MIOpen/build/db.cpp",
+  "file": "/home/marty/Documents/MIOpen/build/db.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/__/kernel.cpp.o -c /home/marty/Documents/MIOpen/build/kernel.cpp",
+  "file": "/home/marty/Documents/MIOpen/build/kernel.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/ocl/handleocl.cpp.o -c /home/marty/Documents/MIOpen/src/ocl/handleocl.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/ocl/handleocl.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/ocl_kernel.cpp.o -c /home/marty/Documents/MIOpen/src/ocl_kernel.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/ocl_kernel.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/ocl/oclerrors.cpp.o -c /home/marty/Documents/MIOpen/src/ocl/oclerrors.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/ocl/oclerrors.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/src",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -DMIOpen_EXPORTS -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include -I/home/marty/Documents/MIOpen/build/include  -O3 -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpen.dir/ocl/clhelper.cpp.o -c /home/marty/Documents/MIOpen/src/ocl/clhelper.cpp",
+  "file": "/home/marty/Documents/MIOpen/src/ocl/clhelper.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/driver",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include  -O3 -DNDEBUG   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpenDriver.dir/main.cpp.o -c /home/marty/Documents/MIOpen/driver/main.cpp",
+  "file": "/home/marty/Documents/MIOpen/driver/main.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/driver",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include  -O3 -DNDEBUG   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -std=gnu++14 -o CMakeFiles/MIOpenDriver.dir/InputFlags.cpp.o -c /home/marty/Documents/MIOpen/driver/InputFlags.cpp",
+  "file": "/home/marty/Documents/MIOpen/driver/InputFlags.cpp"
+},
+{
+  "directory": "/home/marty/Documents/MIOpen/build/test",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB=1 -I/home/marty/Documents/MIOpen/src/include -I/home/marty/Documents/MIOpen/include  -O3 -DNDEBUG   -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -Wall -Wextra -Wcomment -Wendif-labels -Wformat -Winit-self -Wreturn-type -Wsequence-point -Wshadow -Wswitch -Wtrigraphs -Wundef -Wuninitialized -Wunreachable-code -Wunused -Wno-sign-compare -Wno-missing-field-initializers -Wno-deprecated-declarations -pthread -std=gnu++14 -o CMakeFiles/test_main.dir/main.cpp.o -c /home/marty/Documents/MIOpen/test/main.cpp",
+  "file": "/home/marty/Documents/MIOpen/test/main.cpp"
+}
+]

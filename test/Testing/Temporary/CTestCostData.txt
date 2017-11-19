@@ -1,0 +1,11 @@
+test_activation 1 0.619679
+test_bn_aux 4 0.00059402
+test_bn_peract_test 1 0.614741
+test_bn_spatial_test 4 0.00106996
+test_conv 1 0.89664
+test_main 4 0.139994
+test_pooling_test 1 0.444257
+test_soft_max 4 0.000752985
+test_tensor_ops 1 0.308595
+test_tensor_test 4 0.000649214
+---

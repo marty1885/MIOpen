@@ -1,0 +1,1 @@
+/usr/bin/c++  -O3 -DNDEBUG  -rdynamic CMakeFiles/MIOpenDriver.dir/main.cpp.o CMakeFiles/MIOpenDriver.dir/InputFlags.cpp.o  -o ../bin/MIOpenDriver -Wl,-rpath,/home/marty/Documents/MIOpen/build/lib: ../lib/libMIOpen.so.1 -lOpenCL 
