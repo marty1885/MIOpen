@@ -25,6 +25,8 @@
  *******************************************************************************/
 #include <miopen/kernel_cache.hpp>
 #include <miopen/softmax.hpp>
+#include <miopen/float_equal.hpp>
+#include <miopen/check_numerics.hpp>
 
 namespace miopen {
 
@@ -48,14 +50,16 @@ int nextPow2(int v)
     }
 }
 
-miopenStatus_t SoftmaxForward(Handle& handle,
-                              const void* /*alpha*/,
-                              const void* /*beta*/,
-                              const TensorDescriptor& yDesc,
-                              Data_t y)
+miopenStatus_t SoftmaxForward(
+    Handle& handle, const void* alpha, const void* beta, const TensorDescriptor& yDesc, Data_t y)
 {
+    if(!float_equal(*(static_cast<const float*>(alpha)), 1.0) ||
+       !float_equal(*(static_cast<const float*>(beta)), 0))
+    {
+        MIOPEN_THROW("Only alpha=1 and beta=0 is supported");
+    }
     int n, c, h, w;
-    std::tie(n, c, h, w) = tie4(yDesc.GetLengths());
+    std::tie(n, c, h, w) = tien<4>(yDesc.GetLengths());
 
     std::string program_name = "MIOpenSoftmax.cl";
     std::string kernel_name  = "SoftmaxForward";
@@ -66,7 +70,7 @@ miopenStatus_t SoftmaxForward(Handle& handle,
     // num_spatial_dims or pixels each workgroup can compute
     int num_batch = c < 256 ? nextPow2(256 / c) : 1;
 
-    const std::vector<size_t> vld(1, 256);
+    const std::vector<size_t> vld{256, 1, 1};
 
     // compile parameters
     std::string parms = "-DNUM_BATCH=" + std::to_string(num_batch);
@@ -78,7 +82,7 @@ miopenStatus_t SoftmaxForward(Handle& handle,
         // Control the max. number of workgroups launched so that we do not
         // start getting workgroup scheduling overheads
         size_t workgroups = std::min(grid_size, 64 * 40 * 8);
-        const std::vector<size_t> vgd(1, workgroups * vld[0]);
+        const std::vector<size_t> vgd{workgroups * vld[0], 1, 1};
 
         handle.GetKernel("miopenSoftmaxForward", "", program_name, kernel_name, vld, vgd, parms)(
             y, c, grid_size, spatial_dim);
@@ -93,7 +97,7 @@ miopenStatus_t SoftmaxForward(Handle& handle,
 
         size_t workgroups =
             grid_size % num_batch == 0 ? grid_size / num_batch : grid_size / num_batch + 1;
-        const std::vector<size_t> vgd(1, workgroups * vld[0]);
+        const std::vector<size_t> vgd{workgroups * vld[0], 1, 1};
 
         parms += " -DBATCH_SIZE=" + std::to_string(batch_size) + " -DU_BATCH_SIZE=" +
                  std::to_string(u_batch_size);
@@ -101,14 +105,18 @@ miopenStatus_t SoftmaxForward(Handle& handle,
         handle.GetKernel("miopenSoftmaxForward", "", program_name, kernel_name, vld, vgd, parms)(
             y, c, grid_size, spatial_dim);
     }
+    if(miopen::CheckNumericsEnabled())
+    {
+        miopen::checkNumericsOutput(handle, yDesc, y);
+    }
     return miopenStatusSuccess;
 }
 
 miopenStatus_t SoftmaxBackward(Handle& handle,
-                               const void* /*alpha*/,
+                               const void* alpha,
                                const TensorDescriptor& yDesc,
                                ConstData_t y,
-                               const void* /*beta*/,
+                               const void* beta,
                                const TensorDescriptor& dxDesc,
                                Data_t dx)
 {
@@ -116,8 +124,18 @@ miopenStatus_t SoftmaxBackward(Handle& handle,
     {
         MIOPEN_THROW(miopenStatusBadParm);
     }
+    if(!float_equal(*(static_cast<const float*>(alpha)), 1.0) ||
+       !float_equal(*(static_cast<const float*>(beta)), 0))
+    {
+        MIOPEN_THROW("Only alpha=1 and beta=0 is supported");
+    }
+    if(miopen::CheckNumericsEnabled())
+    {
+        miopen::checkNumericsInput(handle, yDesc, y);
+    }
+
     int n, c, h, w;
-    std::tie(n, c, h, w) = tie4(dxDesc.GetLengths());
+    std::tie(n, c, h, w) = tien<4>(dxDesc.GetLengths());
 
     std::string program_name = "MIOpenSoftmax.cl";
     std::string kernel_name  = "SoftmaxBackward";
@@ -127,7 +145,7 @@ miopenStatus_t SoftmaxBackward(Handle& handle,
     int spatial_dim = h * w;
     int num_batch   = c < 256 ? nextPow2(256 / c) : 1;
 
-    const std::vector<size_t> vld(1, 256);
+    const std::vector<size_t> vld{256, 1, 1};
 
     // compile parameters
     std::string parms = "-DNUM_BATCH=" + std::to_string(num_batch);
@@ -139,7 +157,7 @@ miopenStatus_t SoftmaxBackward(Handle& handle,
         // Control the max. number of workgroups launched so that we do not
         // start getting workgroup scheduling overheads
         size_t workgroups = std::min(grid_size, 64 * 40 * 8);
-        const std::vector<size_t> vgd(1, workgroups * vld[0]);
+        const std::vector<size_t> vgd{workgroups * vld[0], 1, 1};
 
         handle.GetKernel("miopenSoftmaxBackward", "", program_name, kernel_name, vld, vgd, parms)(
             y, dx, c, grid_size, spatial_dim);
@@ -152,13 +170,17 @@ miopenStatus_t SoftmaxBackward(Handle& handle,
 
         size_t workgroups =
             grid_size % num_batch == 0 ? grid_size / num_batch : grid_size / num_batch + 1;
-        const std::vector<size_t> vgd(1, workgroups * vld[0]);
+        const std::vector<size_t> vgd{workgroups * vld[0], 1, 1};
 
         parms += " -DBATCH_SIZE=" + std::to_string(batch_size) + " -DU_BATCH_SIZE=" +
                  std::to_string(u_batch_size);
 
         handle.GetKernel("miopenSoftmaxBackward", "", program_name, kernel_name, vld, vgd, parms)(
             y, dx, c, grid_size, spatial_dim);
+    }
+    if(miopen::CheckNumericsEnabled())
+    {
+        miopen::checkNumericsOutput(handle, dxDesc, dx);
     }
 
     return miopenStatusSuccess;

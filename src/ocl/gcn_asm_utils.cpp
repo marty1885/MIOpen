@@ -120,20 +120,20 @@ class Pipe
     Pipe(Pipe&)   = delete;
     Pipe& operator=(Pipe&) = delete;
     ~Pipe() { Close(); }
-    void CloseRead() { CloseSide(_read_side, _read_side_closed); }
-    void CloseWrite() { CloseSide(_write_side, _write_side_closed); }
+    void CloseRead() { CloseSide(_sides[0], _read_side_closed); }
+    void CloseWrite() { CloseSide(_sides[1], _write_side_closed); }
     int DupRead(int target_fd)
     {
         assert(!_read_side_closed);
-        return dup2(_read_side, target_fd);
+        return dup2(_sides[0], target_fd);
     }
     int DupWrite(int target_fd)
     {
         assert(!_write_side_closed);
-        return dup2(_write_side, target_fd);
+        return dup2(_sides[1], target_fd);
     }
-    int GetReadFd() { return _read_side; }
-    int GetWriteFd() { return _write_side; }
+    int GetReadFd() { return _sides[0]; }
+    int GetWriteFd() { return _sides[1]; }
 
     void Close()
     {
@@ -152,18 +152,10 @@ class Pipe
     }
 
     private:
-    union
-    {
-        int _sides[2];
-        struct
-        {
-            int _read_side;
-            int _write_side;
-        };
-    };
+    int _sides[2] = {};
 
-    bool _read_side_closed;
-    bool _write_side_closed;
+    bool _read_side_closed  = false;
+    bool _write_side_closed = false;
 
     static void CloseSide(int fd, bool& closed)
     {
@@ -447,5 +439,26 @@ void AmdgcnAssemble(std::string& source, const std::string& params)
     (void)source; // -warning
     (void)params; // -warning
     MIOPEN_THROW("Error: X-AMDGCN-ASM: online assembly under Windows is not supported");
-#endif // __linux__
+#endif //__linux__
+}
+
+template <>
+void GenerateClangDefsym<const std::string&>(std::ostream& stream,
+                                             const std::string& name,
+                                             const std::string& value)
+{
+    stream << " -Wa,-defsym," << name << "=" << value;
+}
+
+std::string MakeLutKey(int w, int h, int c, int n, int k, int u, int v, int dir, int CUs)
+{
+    std::ostringstream ss;
+    ss << w << ";" << h << ";" << c << ";" << n << ";" << k << ";" << u << ";" << v << ";" << dir
+       << ";" << CUs;
+    return ss.str();
+}
+
+std::string MakeLutKey(int w, int h, int c, int n, int k, int dir, int CUs)
+{
+    return MakeLutKey(w, h, c, n, k, 1, 1, dir, CUs);
 }

@@ -1,19 +1,19 @@
 ################################################################################
-# 
+#
 # MIT License
-# 
+#
 # Copyright (c) 2017 Advanced Micro Devices, Inc.
-# 
+#
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
 # in the Software without restriction, including without limitation the rights
 # to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
-# 
+#
 # The above copyright notice and this permission notice shall be included in all
 # copies or substantial portions of the Software.
-# 
+#
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,7 +21,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-# 
+#
 ################################################################################
 cmake_minimum_required( VERSION 2.8.12 )
 
@@ -50,7 +50,7 @@ project ( MIOpen C CXX )
 #include(ROCMInstallSymlinks)
 #include(ROCMCreatePackage)
 
-#rocm_setup_version(VERSION 1.0.0)
+#rocm_setup_version(VERSION 1.1.4)
 
 list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake )
 
@@ -62,7 +62,7 @@ endif()
 
 ############################################################
 # require C++11
-add_compile_options(-std=gnu++11)
+add_compile_options(-std=gnu++14)
 
 ############################################################
 # OPTION - MIOpen Backend
@@ -90,7 +90,6 @@ set( MIOPEN_BACKEND ${MIOPEN_DEFAULT_BACKEND} CACHE STRING
     "Which of MIOpens's backends to use?" )
 set_property( CACHE MIOPEN_BACKEND PROPERTY STRINGS
     OpenCL HIP HIPOC )
-find_package(miopengemm PATHS /opt/rocm)
 # OpenCL 1.2
 if( MIOPEN_BACKEND STREQUAL "OpenCL")
     set(MIOPEN_BACKEND_OPENCL 1)
@@ -111,9 +110,11 @@ if(1 EQUAL 0)
     else()
         message(FATAL_ERROR "clang-ocl not found")
     endif()
-    
+
     find_package(hip REQUIRED PATHS /opt/rocm)
     link_libraries(stdc++)
+    # A hack to make this work without the device enumerator
+    link_libraries(-amdgpu-target=gfx803 -amdgpu-target=gfx900 -Wno-unused-command-line-argument)
 endif()
 message( STATUS "${MIOPEN_BACKEND} backend selected." )
 
@@ -127,6 +128,7 @@ message( STATUS "${MIOPEN_BACKEND} backend selected." )
 message(STATUS "AMDGCN assembler: ${MIOPEN_AMDGCN_ASSEMBLER}")
 
 # miopengemm
+find_package(miopengemm PATHS /opt/rocm)
 if(miopengemm_FOUND)
     message(STATUS "Build with miopengemm")
     set(MIOPEN_USE_MIOPENGEMM 1)
@@ -134,6 +136,13 @@ else()
     message(STATUS "Build without miopengemm")
     set(MIOPEN_USE_MIOPENGEMM 0)
 endif()
+
+find_package(OpenSSL)
+set(BOOST_COMPONENTS filesystem system)
+add_definitions(-DBOOST_ALL_NO_LIB=1)
+find_package(Boost COMPONENTS ${BOOST_COMPONENTS})
+
+set(MIOPEN_USE_CACHE On CACHE BOOL "")
 
 option( BUILD_SHARED_LIBS "Build as a shared library" ON )
 
@@ -144,19 +153,22 @@ set( DATA_INSTALL_DIR ${MIOPEN_INSTALL_DIR}/${CMAKE_INSTALL_DATAROOTDIR}/miopen 
 
 if(BUILD_DEV)
     set(MIOPEN_BUILD_DEV 1)
-    set(MIOPEN_DB_PATH "${CMAKE_SOURCE_DIR}/src/Kernels")
+    set(MIOPEN_DB_PATH "${CMAKE_SOURCE_DIR}/src/kernels")
+    set(MIOPEN_CACHE_DIR "" CACHE STRING "")
 else()
     set(MIOPEN_BUILD_DEV 0)
     set(MIOPEN_DB_PATH "${CMAKE_INSTALL_PREFIX}/${DATA_INSTALL_DIR}/db" CACHE PATH "Default path to search for db")
+    set(MIOPEN_CACHE_DIR "~/.cache/miopen/" CACHE STRING "")
 endif()
 
-#set(CPACK_DEBIAN_PACKAGE_DEPENDS "rocm-opencl-dev, rocm-utils, hip_hcc")
-#set(CPACK_RPM_PACKAGE_REQUIRES "rocm-opencl-dev, rocm-utils, hip_hcc")
-#rocm_create_package(
-#    NAME MIOpen-${MIOPEN_BACKEND}
-#    DESCRIPTION "AMD's DNN Library"
-#    MAINTAINER "Paul Fultz II <paul.fultz@amd.com>"
-#    LDCONFIG
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "openssl, rocm-opencl-dev, rocm-utils, hip_hcc, miopengemm")
+set(CPACK_RPM_PACKAGE_REQUIRES "openssl, rocm-opencl-dev, rocm-utils, hip_hcc, miopengemm")
+
+# rocm_create_package(
+#     NAME MIOpen-${MIOPEN_BACKEND}
+#     DESCRIPTION "AMD's DNN Library"
+#     MAINTAINER "Paul Fultz II <paul.fultz@amd.com>"
+#     LDCONFIG
     # DEPENDS rocm-opencl rocm-utils hip_hcc tinygemm
 #)
 
@@ -166,8 +178,9 @@ if(CMAKE_CXX_COMPILER MATCHES ".*hcc")
 endif()
 include(ClangTidy)
 enable_clang_tidy(
-    CHECKS 
+    CHECKS
         *
+        -android-cloexec-fopen
         -cert-err60-cpp
         # Yea we shouldn't be using rand()
         -cert-msc30-c
@@ -189,6 +202,14 @@ enable_clang_tidy(
         -google-readability-todo
         -google-runtime-int
         -google-runtime-references
+        -hicpp-braces-around-statements
+        -hicpp-explicit-conversions
+        # We really shouldn't use bitwise operators with signed integers, but
+        # opencl leaves us no choice
+        -hicpp-signed-bitwise
+        -hicpp-special-member-functions
+        -hicpp-use-equals-default
+        -hicpp-use-override
         -llvm-header-guard
         -llvm-include-order
         -misc-macro-parentheses
@@ -199,10 +220,12 @@ enable_clang_tidy(
         -modernize-use-default-member-init
         -modernize-use-emplace
         -modernize-use-equals-default
+        -modernize-use-transparent-functors
         -performance-unnecessary-value-param
         -readability-braces-around-statements
         -readability-else-after-return
         -readability-implicit-bool-cast
+        -readability-implicit-bool-conversion
         -readability-misleading-indentation
         -readability-named-parameter
         ${CLANG_TIDY_CHECKS}
